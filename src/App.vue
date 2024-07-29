@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from "vue";
+
+/* 设置 rem 函数 */
+function setRem() {
+  /* 当前页面宽度缩放比例，可根据自己需要修改 */
+  let clientWidth =
+    document.documentElement.clientWidth > 540
+      ? 375
+      : document.documentElement.clientWidth;
+  document.documentElement.style.fontSize = clientWidth / 10 + "px";
+}
+
+onMounted(() => {
+  /* 初始化 rem */
+  setRem();
+  window.onresize = () => {
+    /* 改变窗口大小时重新设置 rem */
+    setRem();
+  };
+});
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-config-provider>
+    <router-view />
+  </el-config-provider>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>

@@ -1,0 +1,27 @@
+{
+  "name": "容器",
+  "icon": "icon-rongqi",
+  "children": [],
+  "fields": {
+    "paddingTop": {
+      "label": "上间距",
+      "type": "number",
+      "value": 0
+    },
+    "paddingRight": {
+      "label": "右间距",
+      "type": "number",
+      "value": 0
+    },
+    "paddingBottom": {
+      "label": "下间距",
+      "type": "number",
+      "value": 0
+    },
+    "paddingLeft": {
+      "label": "左间距",
+      "type": "number",
+      "value": 0
+    }
+  }
+}
