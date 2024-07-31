@@ -8,8 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Control: typeof import('./src/components/control/index.vue')['default']
+    ControlNestWidget: typeof import('./src/components/control/ControlNestWidget.vue')['default']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    McContainer: typeof import('./src/custom-components/McContainer/index.vue')['default']
+    McImg: typeof import('./src/custom-components/McImg/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    WidgetShape: typeof import('./src/components/control/WidgetShape.vue')['default']
   }
 }

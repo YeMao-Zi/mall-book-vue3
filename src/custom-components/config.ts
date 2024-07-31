@@ -1,11 +1,9 @@
-import { reactive } from "vue";
+import { reactive, defineAsyncComponent, type DefineComponent } from "vue";
+import { Initial } from "@/types/control";
 
 // 获取所有自定义组件schema
-export function registerComponentsSchema() {
-  const initial = reactive<{
-    fields: any;
-    initializing: any[];
-  }>({
+export function useSchema() {
+  const initial = reactive<Initial>({
     fields: {},
     initializing: [],
   });
@@ -23,8 +21,8 @@ export function registerComponentsSchema() {
 
 // 初始化组件初始数据
 function initDefaulValue(config: any) {
-  let { component, name, icon, fields } = config;
-  let temp = { component, name, icon };
+  let { component, name, icon, fields, children } = config;
+  let temp = { component, name, icon, children };
   setDefaultValue(fields, temp);
   return temp;
 }
@@ -41,4 +39,15 @@ function setDefaultValue(fields: any, initializing: any) {
     }
   }
   return initializing;
+}
+
+export function globalComponents(app: any) {
+  const requireModules = import.meta.glob("@/custom-components/**/index.vue");
+  for (const path in requireModules) {
+    const [, name] = path.split("/custom-components/");
+    const result = name.replace("/index.vue", "");
+    const modulesConent: any = requireModules[path];
+    console.log(result, "path", modulesConent);
+    app.component(result, defineAsyncComponent(modulesConent));
+  }
 }

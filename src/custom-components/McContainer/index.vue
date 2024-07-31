@@ -1,33 +1,32 @@
 <template>
-  <div class="McContainer" :style="contentStyle"></div>
+  <div class="McContainer" :style="contentStyle">
+    <slot></slot>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
-interface Props {
-  paddingTop: number;
-  paddingRight: number;
-  paddingLeft: number;
-  paddingBottom: number;
-}
-const props = withDefaults(defineProps<Props>(), {
-  paddingTop: 0,
-  paddingRight: 0,
-  paddingLeft: 0,
-  paddingBottom: 0,
-});
+import { type MainProps } from "../type";
+
+const props = withDefaults(defineProps<MainProps>(), { children: [] });
 
 const contentStyle = computed<StyleValue>(() => {
-  const { paddingTop, paddingRight, paddingBottom, paddingLeft } = props;
+  const {
+    paddingTop,
+    paddingRight,
+    paddingBottom,
+    paddingLeft,
+    backgroundColor,
+  } = props;
   return {
     padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`,
+    backgroundColor: backgroundColor,
   };
 });
 </script>
 
 <style lang="scss" scoped>
 .McContainer {
-  height: 20px;
-  background-color: #fff;
+  word-break: break-all;
 }
 </style>

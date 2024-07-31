@@ -1,6 +1,6 @@
 {
   "name": "图片",
-  "icon": "icon-image",
+  "icon": "ep:picture-filled",
   "fields": {
     "imagePath": {
       "label": "图片上传",

@@ -1,27 +1,32 @@
 {
   "name": "容器",
-  "icon": "icon-rongqi",
+  "icon": "ep:box",
   "children": [],
   "fields": {
     "paddingTop": {
       "label": "上间距",
       "type": "number",
-      "value": 0
+      "value": 10
     },
     "paddingRight": {
       "label": "右间距",
       "type": "number",
-      "value": 0
+      "value": 10
     },
     "paddingBottom": {
       "label": "下间距",
       "type": "number",
-      "value": 0
+      "value": 10
     },
     "paddingLeft": {
       "label": "左间距",
       "type": "number",
-      "value": 0
+      "value": 10
+    },
+    "backgroundColor": {
+      "label": "背景色",
+      "type": "string",
+      "value": "#fff"
     }
   }
 }

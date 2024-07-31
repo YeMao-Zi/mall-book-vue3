@@ -4,7 +4,8 @@ import Components from "unplugin-vue-components/vite";
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import postCssPxToRem from 'postcss-pxtorem'
+import postCssPxToRem from "postcss-pxtorem";
+import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
+      dirs: ["src/components", "src/custom-components/**/index.vue"],
       resolvers: [ElementPlusResolver()],
     }),
   ],
@@ -29,6 +31,7 @@ export default defineConfig({
           rootValue: 37.5,
           propList: ["*"],
         }),
+        tailwindcss,
       ],
     },
   },

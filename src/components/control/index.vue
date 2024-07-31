@@ -1,51 +1,109 @@
+<!--
+ * @Author: zsj 1794541268@qq.com
+ * @Date: 2024-07-10 15:31:30
+ * @LastEditors: zsj 1794541268@qq.com
+ * @LastEditTime: 2024-07-31 13:30:48
+ * @FilePath: \mall-book-vue3\src\components\control\index.vue
+ * @Description: 展示模板
+-->
 <template>
-  <div class="control">
+  <div class="flex h-full text-[16px]">
     <!-- 物料面板 -->
-    <div class="control-material">
-      <VueDraggable></VueDraggable>
+    <div class="w-[236px] bg-white p-[10px]">
+      <VueDraggable
+        ref="draggableRef"
+        v-model="initial.initializing"
+        :group="{ name: 'itxst', pull: 'clone' }"
+        :sort="false"
+        :animation="300"
+        :clone="handleClone"
+      >
+        <div
+          v-for="item in initial.initializing"
+          :key="item.name"
+          class="p-1 inline-flex flex-col items-center justify-center w-6/12 cursor-pointer hover:bg-blue-600 hover:text-white"
+        >
+          <Icon style="font-size: 24px" :icon="item.icon"></Icon>
+          <span>{{ item.name }}</span>
+        </div>
+      </VueDraggable>
     </div>
     <!-- 展示区域 -->
-    <div class="control-page">
-      <div class="panel">1</div>
+    <div class="flex justify-center flex-1 h-full overflow-auto">
+      <div class="h-full py-[50px]">
+        <div class="w-[375px] bg-white shadow-lg h-full">
+          <ControlNestWidget
+            v-model:list="widgets"
+            class="h-full"
+          ></ControlNestWidget>
+        </div>
+      </div>
     </div>
     <!-- 物料配置 -->
-    <div class="control-config">2</div>
+    <div class="control-config w-[360px] overflow-auto p-[10px] bg-white">
+      2
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { registerComponentsSchema } from "@/custom-components/config";
-registerComponentsSchema();
+import { type UseDraggableReturn, VueDraggable } from "vue-draggable-plus";
+import { Icon } from "@iconify/vue";
+import { useSchema } from "@/custom-components/config";
+import { ref, provide } from "vue";
+import { copyObject, randomString } from "@/utils/index";
+import {
+  ControlInject,
+  type SetCurComponent,
+  type DeleteComponent,
+  type WidgetsItem,
+} from "@/types/control";
+
+const draggableRef = ref<UseDraggableReturn>();
+const initial = useSchema();
+const widgets = ref<WidgetsItem[]>([]);
+const curComponent = ref<any>();
+
+const handleClone = (model: object) => {
+  return {
+    ...copyObject(model),
+    id: randomString(),
+  };
+};
+
+// 选中物料
+const setCurComponent: SetCurComponent = (cmp) => {
+  curComponent.value = cmp;
+};
+
+// 删除物料
+const deleteComponent: DeleteComponent = (id, list = widgets.value) => {
+  // 遍历查找目标下标
+  let index = list.reduce((pre, cur, i) => {
+    return cur.id == id ? i : pre;
+  }, -1);
+  // 找到目标，删除无名
+  if (index >= 0) {
+    list.splice(index, 1);
+    console.log("删除成功");
+    console.log(list);
+  } else {
+    // 递归子物料
+    list
+      .filter((c) => c.children)
+      .forEach((c) => {
+        deleteComponent(id, c.children);
+      });
+  }
+};
+
+provide(ControlInject, {
+  initial,
+  widgets: widgets.value,
+  curComponent: curComponent.value,
+  setCurComponent,
+  deleteComponent,
+});
 </script>
 
-<style lang="scss" scoped>
-.control {
-  display: flex;
-  height: 100%;
-  .control-material {
-    width: 236px;
-    padding: 10px 20px;
-    background: #fff;
-  }
-  .control-page {
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    height: 100%;
-    overflow: auto;
-    .panel {
-      width: 375px;
-      margin: 50px auto;
-      background: #fff;
-      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
-    }
-  }
-  .control-config {
-    width: 360px;
-    overflow: auto;
-    animation-duration: 0.2s;
-    padding: 10px;
-    background: #fff;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
