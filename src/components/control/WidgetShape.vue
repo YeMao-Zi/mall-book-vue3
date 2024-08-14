@@ -2,35 +2,74 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 13:34:09
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-07-31 13:30:41
+ * @LastEditTime: 2024-08-13 15:22:46
  * @FilePath: \mall-book-vue3\src\components\control\WidgetShape.vue
  * @Description: 物流容器（管理工具栏）
 -->
 <template>
-  <div class="shape">
+  <div
+    ref="shape"
+    class="shape"
+    @click.stop="controlInject?.setCurComponent(widget)"
+  >
+    <!-- 组件高亮 -->
+    <div v-if="isCurComponent(widget.id)" class="shape-solid event-none"></div>
     <div class="shape-dashed event-none"></div>
-    <div class="shape-solid event-none"></div>
+
+    <!-- 组件工具栏 -->
+    <div v-if="show" class="shape-tab" :style="{ right: getRightStyle() }">
+      <template v-if="isCurComponent(widget.id)">
+        <Icon
+          class="cursor-pointer"
+          style="font-size: 16px"
+          icon="ep:delete"
+          @click.stop="
+            controlInject?.deleteComponent(
+              widget.id,
+              controlInject?.widgets?.value,
+            )
+          "
+        ></Icon>
+      </template>
+      <span v-else>{{ widget.name }}</span>
+    </div>
+
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
-import { ControlInject } from "@/types/control";
-
+import { ref, inject, onMounted } from "vue";
+import { Icon } from "@iconify/vue";
+import { ControlInject, type ComponentOptions } from "@/types/control";
 const controlInject = inject(ControlInject);
 const props = defineProps<{
-  widget: any;
+  widget: ComponentOptions;
 }>();
 
+const show = ref(false);
+const shape = ref<Element>();
+
 const isCurComponent = (id: string) => {
-  return props.widget;
+  return id === controlInject?.curComponent?.value?.id;
 };
+
+const getRightStyle = () => {
+  if (!shape.value) return;
+  let [width] = window.getComputedStyle(shape.value).width.split("px");
+  return `${-(380 - Number(width)) / 2 - 86}px`;
+};
+
+onMounted(() => {
+  show.value = true;
+});
 </script>
 
 <style lang="scss" scoped>
 .shape {
   position: relative;
+  width: 100%;
+  display: inline-block;
   &:hover > .shape-dashed {
     display: block;
   }
@@ -58,6 +97,36 @@ const isCurComponent = (id: string) => {
 
   .event-none {
     pointer-events: none;
+  }
+}
+
+.shape-tab {
+  position: absolute;
+  top: 0; /*no*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px; /*no*/
+  height: 24px; /*no*/
+  font-size: 12px; /*no*/
+  color: #333;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 100%; /*no*/
+    top: 7px; /*no*/
+    width: 0; /*no*/
+    height: 0; /*no*/
+    border-width: 5px; /*no*/
+    border-style: solid;
+    border-color: transparent;
+    margin-bottom: -1px; /*no*/
+    border-right-width: 5px; /*no*/
+    border-right-color: currentColor;
+    color: #fff;
   }
 }
 </style>

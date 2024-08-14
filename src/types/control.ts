@@ -1,14 +1,31 @@
-import type { InjectionKey } from "vue";
+import type { InjectionKey, Ref } from "vue";
 
-export type Fields = any;
+export type Schema = {
+  name: string;
+  icon: string;
+  children?: [];
+  fields: Fields;
+};
 
-export type InitializingItem = any;
+export type Field = {
+  label: string;
+  type: string;
+  value: any;
+  child?: Fields;
+  data?: Array<{ id: string; label: string; value: any }>;
+};
+export type Fields = Record<string, Field>;
 
-export type SetCurComponent = (cmp: any) => void;
+export type InitializingItem = Omit<Schema, "fields"> & {
+  component: string;
+  [x: string]: any;
+};
 
-export type DeleteComponent = (id: string, list?: any[]) => void;
+export type SetCurComponent = (cmp: ComponentOptions) => void;
 
-export type WidgetsItem = InitializingItem & {
+export type DeleteComponent = (id: string, list?: ComponentOptions[]) => void;
+
+export type ComponentOptions = InitializingItem & {
   id: string;
 };
 
@@ -19,8 +36,8 @@ export interface Initial {
 
 export const ControlInject = Symbol() as InjectionKey<{
   initial: Initial;
-  widgets: WidgetsItem[];
-  curComponent: InitializingItem;
+  widgets: Ref<ComponentOptions[]>;
+  curComponent: Ref<ComponentOptions | undefined>;
   setCurComponent: SetCurComponent;
   deleteComponent: DeleteComponent;
 }>;

@@ -18,7 +18,11 @@ export interface BoxBorder {
   borderRadius: number;
 }
 
-export interface MainProps extends BoxPadding, BoxMargin, BoxBorder {
-  children?: any;
+export interface MainStyles extends BoxPadding, BoxMargin, BoxBorder {
   backgroundColor: string;
+}
+
+export interface MainProps {
+  styles: MainStyles;
+  children?: any;
 }

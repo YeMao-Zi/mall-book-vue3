@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-07-31 13:30:48
+ * @LastEditTime: 2024-08-13 17:34:41
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -30,18 +30,16 @@
     </div>
     <!-- 展示区域 -->
     <div class="flex justify-center flex-1 h-full overflow-auto">
-      <div class="h-full py-[50px]">
-        <div class="w-[375px] bg-white shadow-lg h-full">
-          <ControlNestWidget
-            v-model:list="widgets"
-            class="h-full"
-          ></ControlNestWidget>
-        </div>
+      <div class="w-[375px] my-[50px] mx-auto bg-white shadow-lg">
+        <ControlNestWidget v-model:list="widgets"></ControlNestWidget>
       </div>
     </div>
     <!-- 物料配置 -->
     <div class="control-config w-[360px] overflow-auto p-[10px] bg-white">
-      2
+      <customSchemaTemplate
+        v-model="curComponent"
+        :shema-field="curShemaField"
+      />
     </div>
   </div>
 </template>
@@ -50,19 +48,26 @@
 import { type UseDraggableReturn, VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
 import { useSchema } from "@/custom-components/config";
-import { ref, provide } from "vue";
+import { ref, provide, computed } from "vue";
 import { copyObject, randomString } from "@/utils/index";
 import {
   ControlInject,
   type SetCurComponent,
   type DeleteComponent,
-  type WidgetsItem,
+  type ComponentOptions,
 } from "@/types/control";
+import customSchemaTemplate from "@/custom-schema-template/index.vue";
 
 const draggableRef = ref<UseDraggableReturn>();
 const initial = useSchema();
-const widgets = ref<WidgetsItem[]>([]);
-const curComponent = ref<any>();
+const widgets = ref<ComponentOptions[]>([]);
+const curComponent = ref<ComponentOptions>();
+
+// 当前选中物料的配置
+const curShemaField = computed(() => {
+  if (!curComponent?.value) return undefined;
+  return initial.fields[curComponent?.value.component];
+});
 
 const handleClone = (model: object) => {
   return {
@@ -73,6 +78,7 @@ const handleClone = (model: object) => {
 
 // 选中物料
 const setCurComponent: SetCurComponent = (cmp) => {
+  console.log(cmp, "cmp");
   curComponent.value = cmp;
 };
 
@@ -99,8 +105,8 @@ const deleteComponent: DeleteComponent = (id, list = widgets.value) => {
 
 provide(ControlInject, {
   initial,
-  widgets: widgets.value,
-  curComponent: curComponent.value,
+  widgets: widgets,
+  curComponent: curComponent,
   setCurComponent,
   deleteComponent,
 });

@@ -15,7 +15,11 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      dirs: ["src/components", "src/custom-components/**/index.vue"],
+      dirs: [
+        "src/components",
+        "src/custom-components/**/index.vue",
+        "src/custom-schema-template/**/index.vue",
+      ],
       resolvers: [ElementPlusResolver()],
     }),
   ],

@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ConfigItem: typeof import('./src/components/ConfigItem.vue')['default']
     Control: typeof import('./src/components/control/index.vue')['default']
     ControlNestWidget: typeof import('./src/components/control/ControlNestWidget.vue')['default']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
