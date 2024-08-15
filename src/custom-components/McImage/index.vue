@@ -1,0 +1,29 @@
+<template>
+  <img :style="imageStyle" :src="imageValue?.imagePath || defaultImagePath" />
+</template>
+
+<script setup lang="ts">
+import { type MainProps } from "../type";
+import { computed } from "vue";
+const defaultImagePath = "https://s2.loli.net/2024/08/15/QtD6yeodhLUbwFg.webp";
+const props = defineProps<
+  MainProps & {
+    imageValue: {
+      imagePath?: string;
+      jumpPath?: string;
+    };
+  }
+>();
+
+const imageStyle = computed(() => {
+  if (!props.styles) return;
+  const { borderRadius, height } = props.styles;
+  return {
+    borderRadius: `${borderRadius}px`,
+    height: `${height}px`,
+    width: "100%",
+  };
+});
+</script>
+
+<style lang="scss" scoped></style>

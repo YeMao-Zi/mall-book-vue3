@@ -1,11 +1,16 @@
 <template>
-  <ConfigItem :label="label">123{{ label }}</ConfigItem>
+  <div>
+    <div class="p-1 bg-slate-200 text-slate-600">
+      <span>{{ label }}</span>
+    </div>
+    <div class="p-1">
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import ConfigItem from "@/components/ConfigItem.vue";
 const props = defineProps<{ label: string }>();
-console.log(123456);
 </script>
 
 <style></style>

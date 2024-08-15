@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 11:01:21
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-08-12 17:35:01
+ * @LastEditTime: 2024-08-15 13:36:01
  * @FilePath: \mall-book-vue3\src\components\control\ControlNestWidget.vue
  * @Description: 嵌套物料
 -->
@@ -50,8 +50,7 @@ const widgets = computed({
 
 <style scoped>
 .nest-child {
-  min-height: 80px;
-  background: #f7f8fa80;
+  /* min-height: 80px; */
 }
 
 .nest-area {

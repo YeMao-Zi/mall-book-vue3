@@ -7,15 +7,18 @@
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
-import { getMainStyleByProps } from "../utils";
+import { getMainStyleByProps, isNumber } from "../utils";
 
-const props = withDefaults(defineProps<MainProps>(), { children: [] });
+const props = withDefaults(defineProps<MainProps>(), {});
 
 const contentStyle = computed<StyleValue>(() => {
-  console.log(props);
-  const mainStyle = getMainStyleByProps(props?.styles);
+  if (!props?.styles) return {};
+  const mainStyle = getMainStyleByProps(props.styles);
+  const { height = "auto" } = props.styles;
+
   return {
     ...mainStyle,
+    height: isNumber(height) ? `${height}px` : height,
   };
 });
 </script>

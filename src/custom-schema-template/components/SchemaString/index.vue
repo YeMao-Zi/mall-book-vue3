@@ -1,13 +1,13 @@
 <template>
-  <ConfigItem :label="label">
-    <el-slider v-bind="attr" v-model="model" show-input size="small" />
-  </ConfigItem>
+  <config-item :label="label">
+    <el-input v-model="model" />
+  </config-item>
 </template>
 
 <script setup lang="ts">
 import ConfigItem from "@/components/ConfigItem.vue";
 import { type ComponentOptions } from "vue";
-const props = defineProps<{ label: string; attr?: any }>();
+const props = defineProps<{ label: string }>();
 
 const model = defineModel<ComponentOptions>();
 </script>

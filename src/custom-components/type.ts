@@ -1,3 +1,5 @@
+import { StyleValue } from "vue";
+
 export interface BoxPadding {
   paddingTop: number;
   paddingRight: number;
@@ -18,11 +20,7 @@ export interface BoxBorder {
   borderRadius: number;
 }
 
-export interface MainStyles extends BoxPadding, BoxMargin, BoxBorder {
-  backgroundColor: string;
-}
-
 export interface MainProps {
-  styles: MainStyles;
+  styles?: Record<string, any>;
   children?: any;
 }

@@ -1,0 +1,42 @@
+{
+  "name": "走马灯",
+  "icon": "icon-park-outline:carousel",
+  "fields": {
+    "list": {
+      "label": "列表",
+      "type": "array",
+      "child": {
+        "image": {
+          "label": "轮播图片",
+          "type": "upload",
+          "value": ""
+        },
+        "jump": {
+          "label": "页面跳转",
+          "type": "jump",
+          "value": ""
+        }
+      }
+    },
+    "attrs": {},
+    "styles": {
+      "label": "走马灯样式",
+      "type": "object",
+      "child": {
+        "borderRadius": {
+          "label": "圆角",
+          "type": "number",
+          "value": 10
+        },
+        "height": {
+          "label": "高度",
+          "type": "number",
+          "attr": {
+            "max": 500
+          },
+          "value": 150
+        }
+      }
+    }
+  }
+}

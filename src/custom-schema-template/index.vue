@@ -10,8 +10,8 @@
       >
         <custom-schema-template
           v-if="s.child"
-          :schema="s.child"
-          :value="model[key]"
+          v-model="model[key]"
+          :shema-field="s.child"
         ></custom-schema-template>
       </component>
     </li>
@@ -20,7 +20,6 @@
 
 <script setup lang="ts">
 import type { Field, ComponentOptions } from "@/types/control";
-import { ComputedRef, Ref } from "vue";
 
 const model = defineModel<ComponentOptions>();
 

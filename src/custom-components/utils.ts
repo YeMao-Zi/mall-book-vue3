@@ -1,5 +1,8 @@
-import { MainStyles } from "./type";
-export const getMainStyleByProps = (props: MainStyles) => {
+import { CSSProperties } from "vue";
+
+export const getMainStyleByProps = (
+  props: Record<string, any>,
+): CSSProperties => {
   const {
     paddingTop,
     paddingRight,
@@ -19,6 +22,10 @@ export const getMainStyleByProps = (props: MainStyles) => {
     margin: `${marginTop}px ${marginRight}px ${marginBottom}px ${marginLeft}px`,
     backgroundColor: backgroundColor,
     border: `${borderWidth}px solid ${borderColor}`,
-    borderRadius,
+    borderRadius: `${borderRadius}px`,
   };
+};
+
+export const isNumber = (value: any) => {
+  return !isNaN(parseFloat(value)) && isFinite(value);
 };

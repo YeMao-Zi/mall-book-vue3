@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 13:34:09
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-08-13 15:22:46
+ * @LastEditTime: 2024-08-15 14:34:25
  * @FilePath: \mall-book-vue3\src\components\control\WidgetShape.vue
  * @Description: 物流容器（管理工具栏）
 -->
@@ -20,7 +20,7 @@
     <div v-if="show" class="shape-tab" :style="{ right: getRightStyle() }">
       <template v-if="isCurComponent(widget.id)">
         <Icon
-          class="cursor-pointer"
+          class="cursor-pointer hover:text-blue-600"
           style="font-size: 16px"
           icon="ep:delete"
           @click.stop="

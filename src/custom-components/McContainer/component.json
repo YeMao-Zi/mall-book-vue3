@@ -1,19 +1,13 @@
 {
   "name": "容器",
-  "icon": "ep:box",
-  "children": [],
+  "icon": "mynaui:box",
   "fields": {
     "styles": {
-      "label": "导航栏样式",
+      "label": "容器样式",
       "type": "object",
       "child": {
         "paddingTop": {
           "label": "上内间距",
-          "type": "number",
-          "value": 10
-        },
-        "paddingRight": {
-          "label": "右内间距",
           "type": "number",
           "value": 10
         },
@@ -27,18 +21,23 @@
           "type": "number",
           "value": 10
         },
+        "paddingRight": {
+          "label": "右内间距",
+          "type": "number",
+          "value": 10
+        },
         "backgroundColor": {
           "label": "背景色",
-          "type": "string",
-          "value": "#fff"
+          "type": "color",
+          "value": "rgba(255, 255, 255, 0.5)"
         },
         "marginTop": {
           "label": "上外间距",
           "type": "number",
           "value": 10
         },
-        "marginRight": {
-          "label": "右外间距",
+        "marginBottom": {
+          "label": "下外间距",
           "type": "number",
           "value": 10
         },
@@ -47,8 +46,8 @@
           "type": "number",
           "value": 10
         },
-        "marginBottom": {
-          "label": "下外间距",
+        "marginRight": {
+          "label": "右外间距",
           "type": "number",
           "value": 10
         },
@@ -59,8 +58,8 @@
         },
         "borderColor": {
           "label": "边框颜色",
-          "type": "string",
-          "value": "#dcdfe6"
+          "type": "color",
+          "value": "rgba(209, 209, 212, 0.95)"
         },
         "borderRadius": {
           "label": "边框圆角",
@@ -68,41 +67,6 @@
           "value": 10
         }
       }
-    },
-    "tabList": {
-      "label": "导航栏列表",
-      "type": "array",
-      "child": {
-        "label": {
-          "label": "导航名称",
-          "type": "string",
-          "value": "默认导航"
-        },
-        "image": {
-          "label": "图片上传",
-          "type": "string",
-          "value": "https://s2.loli.net/2024/07/08/hsmbEeqQVHnGtNk.png"
-        },
-        "link": {
-          "label": "跳转链接",
-          "type": "link",
-          "value": "https://www.baidu.com"
-        }
-      },
-      "value": [
-        {
-          "id": "01",
-          "label": "推荐酒店",
-          "image": "https://s2.loli.net/2024/07/08/hsmbEeqQVHnGtNk.png",
-          "link": ""
-        },
-        {
-          "id": "02",
-          "label": "热销抢购",
-          "image": "https://s2.loli.net/2024/07/08/hsmbEeqQVHnGtNk.png",
-          "link": ""
-        }
-      ]
     }
   }
 }

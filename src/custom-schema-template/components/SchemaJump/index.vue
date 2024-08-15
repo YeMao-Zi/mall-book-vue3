@@ -1,14 +1,13 @@
 <template>
   <ConfigItem :label="label">
-    <el-slider v-bind="attr" v-model="model" show-input size="small" />
+    <el-input v-model="model" placeholder="请输入跳转链接或路径" />
   </ConfigItem>
 </template>
 
 <script setup lang="ts">
 import ConfigItem from "@/components/ConfigItem.vue";
 import { type ComponentOptions } from "vue";
-const props = defineProps<{ label: string; attr?: any }>();
-
+const props = defineProps<{ label: string }>();
 const model = defineModel<ComponentOptions>();
 </script>
 

@@ -1,5 +1,10 @@
 import { reactive, defineAsyncComponent, type App } from "vue";
-import type { Initial, Fields, InitializingItem } from "@/types/control";
+import type {
+  Initial,
+  Fields,
+  InitializingItem,
+  Schema,
+} from "@/types/control";
 
 // 获取所有自定义组件schema
 export function useSchema() {
@@ -20,7 +25,7 @@ export function useSchema() {
 }
 
 // 初始化组件初始数据
-function initDefaulValue(config: any) {
+function initDefaulValue(config: Schema & { component: string }) {
   let { component, name, icon, fields, children } = config;
   let temp = { component, name, icon, children };
   setDefaultValue(fields, temp);
