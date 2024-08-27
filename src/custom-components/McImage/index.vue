@@ -5,7 +5,8 @@
 <script setup lang="ts">
 import { type MainProps } from "../type";
 import { computed } from "vue";
-const defaultImagePath = "https://s2.loli.net/2024/08/15/QtD6yeodhLUbwFg.webp";
+import baseImg from "./baseImg";
+const defaultImagePath = baseImg;
 const props = defineProps<
   MainProps & {
     imageValue: {

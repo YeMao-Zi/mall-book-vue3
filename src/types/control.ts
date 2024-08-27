@@ -5,6 +5,7 @@ export type Schema = {
   icon: string;
   children?: [];
   fields: Fields;
+  [x: string]: any;
 };
 
 export type Field = {
@@ -14,7 +15,10 @@ export type Field = {
   child?: Fields;
   data?: Array<{ id: string; label: string; value: any }>;
 };
-export type Fields = Record<string, Field>;
+export type Fields = {
+  styles?: Record<string, Field>;
+  [x: string]: any;
+};
 
 export type InitializingItem = Omit<Schema, "fields"> & {
   component: string;

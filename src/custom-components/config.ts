@@ -25,7 +25,7 @@ export function useSchema() {
 }
 
 // 初始化组件初始数据
-function initDefaulValue(config: Schema & { component: string }) {
+export function initDefaulValue(config: Schema & { component: string }) {
   let { component, name, icon, fields, children } = config;
   let temp = { component, name, icon, children };
   setDefaultValue(fields, temp);
@@ -33,7 +33,10 @@ function initDefaulValue(config: Schema & { component: string }) {
 }
 
 // 递归设置各层级初始数据
-function setDefaultValue(fields: Fields, initializing: InitializingItem) {
+export function setDefaultValue(
+  fields: Fields,
+  initializing: InitializingItem,
+) {
   for (let key in fields) {
     let { type, value, child } = fields[key];
     if (type == "object") {

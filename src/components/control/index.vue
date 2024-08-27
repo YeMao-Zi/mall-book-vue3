@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-08-15 15:15:51
+ * @LastEditTime: 2024-08-27 15:23:06
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -32,15 +32,23 @@
     <div class="flex justify-center flex-1 h-full overflow-auto">
       <div class="w-full">
         <div class="w-[375px] my-[50px] mx-auto bg-white shadow-lg">
-          <ControlNestWidget v-model:list="widgets"></ControlNestWidget>
+          <pageConfig :styles="pageCmp.styles" @pageSetting="handlePageSetting">
+            <ControlNestWidget v-model:list="widgets"></ControlNestWidget>
+          </pageConfig>
         </div>
       </div>
     </div>
     <!-- 物料配置 -->
     <div class="control-config w-[360px] overflow-auto p-[10px] bg-white">
       <customSchemaTemplate
+        v-if="curComponent"
         v-model="curComponent"
         :shema-field="curShemaField"
+      />
+      <customSchemaTemplate
+        v-else
+        v-model="pageCmp"
+        :shema-field="pageShemaField"
       />
     </div>
   </div>
@@ -60,6 +68,7 @@ import type {
 } from "@/types/control";
 import { ControlInject } from "@/types/control";
 import customSchemaTemplate from "@/custom-schema-template/index.vue";
+import { pageCmp, pageShemaField } from "../pageConfig/config";
 
 const draggableRef = ref<UseDraggableReturn>();
 const initial = useSchema();
@@ -69,7 +78,9 @@ const curComponent = ref<ComponentOptions>();
 // 当前选中物料的配置
 const curShemaField = computed(() => {
   if (!curComponent?.value) return undefined;
-  return initial.fields[curComponent?.value.component];
+  const shemaField = initial.fields[curComponent?.value.component];
+  console.log(shemaField, "shemaField");
+  return shemaField;
 });
 
 const handleClone = (model: InitializingItem) => {
@@ -106,6 +117,11 @@ const deleteComponent: DeleteComponent = (id, list = widgets.value) => {
         deleteComponent(id, c.children);
       });
   }
+  curComponent.value = undefined;
+};
+
+const handlePageSetting = () => {
+  curComponent.value = undefined;
 };
 
 provide(ControlInject, {
