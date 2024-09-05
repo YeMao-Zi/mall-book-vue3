@@ -14,7 +14,7 @@ import { Icon } from "@iconify/vue";
 import { computed } from "vue";
 import { type MainProps } from "@/custom-components/type";
 
-const props = withDefaults(defineProps<MainProps>(), {});
+const props = defineProps<MainProps>();
 const emits = defineEmits(["pageSetting"]);
 
 const pageStyles = computed(() => {

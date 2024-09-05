@@ -7,7 +7,7 @@ import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
 import { getMainStyleByProps, isNumber } from "../utils";
 
-const props = withDefaults(defineProps<MainProps>(), {});
+const props = defineProps<MainProps>();
 
 const contentStyle = computed<StyleValue>(() => {
   if (!props?.styles) return {};

@@ -2,13 +2,13 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 13:34:09
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-08-15 14:34:25
+ * @LastEditTime: 2024-09-05 16:08:00
  * @FilePath: \mall-book-vue3\src\components\control\WidgetShape.vue
  * @Description: 物流容器（管理工具栏）
 -->
 <template>
   <div
-    ref="shape"
+    ref="shapeRef"
     class="shape"
     @click.stop="controlInject?.setCurComponent(widget)"
   >
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, onMounted } from "vue";
+import { ref, inject, onMounted, useTemplateRef } from "vue";
 import { Icon } from "@iconify/vue";
 import { ControlInject, type ComponentOptions } from "@/types/control";
 const controlInject = inject(ControlInject);
@@ -48,15 +48,15 @@ const props = defineProps<{
 }>();
 
 const show = ref(false);
-const shape = ref<Element>();
+const shapeRef = useTemplateRef<Element>("shapeRef");
 
 const isCurComponent = (id: string) => {
   return id === controlInject?.curComponent?.value?.id;
 };
 
 const getRightStyle = () => {
-  if (!shape.value) return;
-  let [width] = window.getComputedStyle(shape.value).width.split("px");
+  if (!shapeRef.value) return;
+  let [width] = window.getComputedStyle(shapeRef.value).width.split("px");
   return `${-(380 - Number(width)) / 2 - 86}px`;
 };
 

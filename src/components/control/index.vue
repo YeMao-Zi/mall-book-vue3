@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-04 17:37:02
+ * @LastEditTime: 2024-09-05 16:09:57
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -61,7 +61,7 @@
 import { type UseDraggableReturn, VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
 import { useSchema } from "@/custom-components/config";
-import { ref, provide, computed, watch } from "vue";
+import { ref, provide, computed, watch, useTemplateRef } from "vue";
 import { deepClone, randomString } from "@/utils/index";
 import type {
   SetCurComponent,
@@ -73,7 +73,7 @@ import { ControlInject } from "@/types/control";
 import customSchemaTemplate from "@/custom-schema-template/index.vue";
 import { pageCmp, pageShemaField } from "../pageConfig/config";
 
-const draggableRef = ref<UseDraggableReturn>();
+const draggableRef = useTemplateRef("draggableRef");
 const initial = useSchema();
 const widgets = ref<ComponentOptions[]>([]);
 const curComponent = ref<ComponentOptions>();

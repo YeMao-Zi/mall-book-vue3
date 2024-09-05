@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 11:01:21
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-04 17:36:29
+ * @LastEditTime: 2024-09-05 16:09:35
  * @FilePath: \mall-book-vue3\src\components\control\ControlNestWidget.vue
  * @Description: 嵌套物料
 -->
@@ -34,9 +34,7 @@ interface Props {
   isWidget?: boolean;
   list: any[];
 }
-const props = withDefaults(defineProps<Props>(), {
-  isWidget: false,
-});
+const { isWidget = false, list } = defineProps<Props>();
 
 interface Emits {
   (e: "update:list", value: any): void;
@@ -44,7 +42,7 @@ interface Emits {
 const emits = defineEmits<Emits>();
 
 const widgets = computed({
-  get: () => props.list,
+  get: () => list,
   set: (value) => {
     console.log(value, "value");
     emits("update:list", value);
