@@ -1,3 +1,5 @@
+import navBar from "@/components/navBar/index.vue";
+import { createApp, createVNode, render } from "vue";
 // 获取随机字符串
 export const randomString = () => Math.random().toString(36).slice(2);
 
@@ -13,4 +15,17 @@ export const deepClone = (obj: any) => {
   }
   //基本类型直接赋值
   return objClone;
+};
+
+export const test = () => {
+  const div = document.createElement("div");
+  // const componentInstance = createApp(navBar, {
+  //   text: "1234",
+  // });
+  // componentInstance.mount(div);
+
+  const vm = createVNode(navBar, { text: "1234" }); // 创建vNode
+  render(vm, div);
+  console.log(div);
+  // document.body.appendChild(div);
 };

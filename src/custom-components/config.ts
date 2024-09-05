@@ -25,6 +25,7 @@ export function useSchema() {
 }
 
 // 初始化组件初始数据
+// 将 fields 中的属性提取出来向上合并
 export function initDefaulValue(config: Schema & { component: string }) {
   let { component, name, icon, fields, children } = config;
   let temp = { component, name, icon, children };
@@ -33,6 +34,7 @@ export function initDefaulValue(config: Schema & { component: string }) {
 }
 
 // 递归设置各层级初始数据
+// 将 fields 中 type 为 object 的对象中的 child 属性合并到该对象中
 export function setDefaultValue(
   fields: Fields,
   initializing: InitializingItem,

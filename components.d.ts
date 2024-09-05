@@ -19,6 +19,7 @@ declare module 'vue' {
     ElUpload: typeof import('element-plus/es')['ElUpload']
     McContainer: typeof import('./src/custom-components/McContainer/index.vue')['default']
     McImg: typeof import('./src/custom-components/McImg/index.vue')['default']
+    NavBar: typeof import('./src/components/navBar/index.vue')['default']
     PageConfig: typeof import('./src/components/pageConfig/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

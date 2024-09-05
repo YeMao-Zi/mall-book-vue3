@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-08-27 15:23:06
+ * @LastEditTime: 2024-09-04 17:37:02
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -32,7 +32,10 @@
     <div class="flex justify-center flex-1 h-full overflow-auto">
       <div class="w-full">
         <div class="w-[375px] my-[50px] mx-auto bg-white shadow-lg">
-          <pageConfig :styles="pageCmp.styles" @pageSetting="handlePageSetting">
+          <pageConfig
+            :styles="pageCmp.styles"
+            @page-setting="handlePageSetting"
+          >
             <ControlNestWidget v-model:list="widgets"></ControlNestWidget>
           </pageConfig>
         </div>
@@ -58,7 +61,7 @@
 import { type UseDraggableReturn, VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
 import { useSchema } from "@/custom-components/config";
-import { ref, provide, computed } from "vue";
+import { ref, provide, computed, watch } from "vue";
 import { deepClone, randomString } from "@/utils/index";
 import type {
   SetCurComponent,
@@ -83,8 +86,17 @@ const curShemaField = computed(() => {
   return shemaField;
 });
 
+// 可导出的配置信息
+const configure = computed(() => {
+  return {
+    pageCmp,
+    widgets,
+  };
+});
+
 const handleClone = (model: InitializingItem) => {
-  const { children = [] } = model;
+  const { children } = model;
+  console.log(children, "model", model);
   return {
     ...deepClone(model),
     id: randomString(),
@@ -130,6 +142,10 @@ provide(ControlInject, {
   curComponent: curComponent,
   setCurComponent,
   deleteComponent,
+});
+
+defineExpose({
+  configure,
 });
 </script>
 

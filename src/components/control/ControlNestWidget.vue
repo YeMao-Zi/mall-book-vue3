@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 11:01:21
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-08-15 13:36:01
+ * @LastEditTime: 2024-09-04 17:36:29
  * @FilePath: \mall-book-vue3\src\components\control\ControlNestWidget.vue
  * @Description: 嵌套物料
 -->
@@ -17,6 +17,7 @@
     <WidgetShape v-for="item in widgets" :key="item.id" :widget="item">
       <component :is="item.component" v-bind="item">
         <ControlNestWidget
+          v-if="item.children"
           v-model:list="item.children"
           is-widget
         ></ControlNestWidget>
@@ -26,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 import { VueDraggable } from "vue-draggable-plus";
 
 interface Props {
@@ -38,13 +39,16 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 interface Emits {
-  (e: "update:list", value: any[]): void;
+  (e: "update:list", value: any): void;
 }
 const emits = defineEmits<Emits>();
 
 const widgets = computed({
   get: () => props.list,
-  set: (value) => emits("update:list", value),
+  set: (value) => {
+    console.log(value, "value");
+    emits("update:list", value);
+  },
 });
 </script>
 
@@ -54,6 +58,8 @@ const widgets = computed({
 }
 
 .nest-area {
+  display: flex;
+  flex-direction: column;
   min-height: 600px;
 }
 </style>

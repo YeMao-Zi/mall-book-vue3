@@ -1,24 +1,37 @@
 {
-  "name": "走马灯",
+  "name": "轮播",
   "icon": "icon-park-outline:carousel",
   "fields": {
     "list": {
-      "label": "列表",
+      "label": "轮播列表",
       "type": "array",
       "child": {
-        "image": {
+        "imagePath": {
           "label": "轮播图片",
           "type": "upload",
           "value": ""
         },
-        "jump": {
+        "jumpPath": {
           "label": "页面跳转",
           "type": "jump",
           "value": ""
         }
-      }
+      },
+      "value": [
+        {
+          "id": "0001",
+          "image": "http://110.41.150.71:8090/img/1667354598861.png"
+        },
+        {
+          "id": "0002",
+          "image": "http://110.41.150.71:8090/img/1667354575078.png"
+        }
+      ]
     },
-    "attrs": {},
+    "attrs": {
+      "label": "轮播设置",
+      "type": "object"
+    },
     "styles": {
       "label": "走马灯样式",
       "type": "object",

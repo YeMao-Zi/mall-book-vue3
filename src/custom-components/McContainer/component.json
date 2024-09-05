@@ -1,6 +1,7 @@
 {
   "name": "容器",
   "icon": "mynaui:box",
+  "children": [],
   "fields": {
     "styles": {
       "label": "容器样式",
