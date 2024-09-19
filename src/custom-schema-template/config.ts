@@ -14,3 +14,8 @@ export function globalComponents(app: App<Element>) {
   }
   app.component("CustomSchemaTemplate", customSchemaTemplate);
 }
+
+// 组件类型对应
+export const getComponents = (type: string) => {
+  return `schema-${type}`;
+};

@@ -20,16 +20,13 @@
 
 <script setup lang="ts">
 import type { Field, ComponentOptions } from "@/types/control";
+import { getComponents } from "./config";
 
 const model = defineModel<ComponentOptions>();
 
 const props = defineProps<{
   shemaField?: Field;
 }>();
-
-const getComponents = (type: string) => {
-  return `schema-${type}`;
-};
 </script>
 
 <style></style>

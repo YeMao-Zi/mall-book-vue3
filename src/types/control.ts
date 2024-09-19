@@ -11,13 +11,14 @@ export type Schema = {
 export type Field = {
   label: string;
   type: string;
-  value: any;
+  value?: any;
   child?: Fields;
   data?: Array<{ id: string; label: string; value: any }>;
 };
+
 export type Fields = {
-  styles?: Record<string, Field>;
-  [x: string]: any;
+  // styles?: Record<string, Field>;
+  [x: string]: Field;
 };
 
 export type InitializingItem = Omit<Schema, "fields"> & {
