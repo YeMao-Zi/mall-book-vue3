@@ -1,6 +1,6 @@
 <template>
   <ConfigItem :label="label">
-    <el-slider v-bind="attr" v-model="model" show-input size="small" />
+    <a-slider v-bind="attr" v-model="model" show-input size="small" />
   </ConfigItem>
 </template>
 

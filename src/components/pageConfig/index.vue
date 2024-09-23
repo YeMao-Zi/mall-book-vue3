@@ -1,10 +1,10 @@
 <template>
   <div class="w-full h-full relative" :style="pageStyles">
-    <el-tooltip placement="bottom" content="页面设置">
+    <a-tooltip position="bottom" content="页面设置">
       <div class="pageSetting" @click="pageSetting">
         <Icon style="font-size: 24px" icon="ep:setting" />
       </div>
-    </el-tooltip>
+    </a-tooltip>
     <slot></slot>
   </div>
 </template>

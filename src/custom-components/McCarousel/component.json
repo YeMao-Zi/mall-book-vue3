@@ -20,11 +20,13 @@
       "value": [
         {
           "id": "0001",
-          "image": "http://110.41.150.71:8090/img/1667354598861.png"
+          "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png",
+          "jumpPath": "https://www.baidu.com"
         },
         {
           "id": "0002",
-          "image": "http://110.41.150.71:8090/img/1667354575078.png"
+          "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png",
+          "jumpPath": "https://www.baidu.com"
         }
       ]
     },

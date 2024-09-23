@@ -81,7 +81,6 @@ const initial = {
   ],
 };
 
-
 /** START 中间面板区域*/
 // 中间面板的响应数据：
 const widgets = [
@@ -109,7 +108,6 @@ const widgets = [
 ];
 /** END */
 
-
 /** START 右侧控制区域*/
 // 拍平后组件的对应的响应数据
 const curComponent = {
@@ -119,11 +117,13 @@ const curComponent = {
   list: [
     {
       id: "0001",
-      image: "http://110.41.150.71:8090/img/1667354598861.png",
+      imagePath: "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png",
+      jumpPath: "https://www.baidu.com",
     },
     {
       id: "0002",
-      image: "http://110.41.150.71:8090/img/1667354575078.png",
+      imagePath: "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png",
+      jumpPath: "https://www.baidu.com",
     },
   ],
   attrs: {},

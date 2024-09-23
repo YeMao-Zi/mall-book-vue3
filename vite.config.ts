@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
+import { ArcoResolver } from "unplugin-vue-components/resolvers";
+import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import postCssPxToRem from "postcss-pxtorem";
 import tailwindcss from "tailwindcss";
 
@@ -11,8 +12,11 @@ import tailwindcss from "tailwindcss";
 export default defineConfig({
   plugins: [
     vue(),
+    vitePluginForArco({
+      style: "css",
+    }),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ArcoResolver()],
     }),
     Components({
       dirs: [
@@ -20,7 +24,11 @@ export default defineConfig({
         "src/custom-components/**/index.vue",
         "src/custom-schema-template/**/index.vue",
       ],
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        ArcoResolver({
+          sideEffect: true,
+        }),
+      ],
     }),
   ],
   resolve: {

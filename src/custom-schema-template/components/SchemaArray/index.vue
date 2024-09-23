@@ -4,13 +4,12 @@
       <span>{{ label }}</span>
     </div>
     <div class="p-1">
-      <VueDraggable v-model="field">
+      <VueDraggable v-model="model">
         <!-- 编译模式,插槽可供自定义拖拽组件入容器 -->
         <slot v-if="edit"></slot>
         <!-- 非编译模式，根据schema子类遍历数组单项组件 -->
         <template v-else>
-          <!-- <template v-if="field?.length"> -->
-          <div v-for="item in field" :key="item.id" class="nav-item">
+          <div v-for="item in model" :key="item.id" class="nav-item">
             <component
               v-for="(val, key, index) in schema?.child"
               :key="index"
@@ -18,40 +17,74 @@
               v-model="item[key]"
               v-bind="val"
             ></component>
+            <div class="nav-delete" @click="delItem(item.id)">x</div>
           </div>
-          <!-- </template> -->
         </template>
       </VueDraggable>
+      <a-button long type="outline" @click="addItem">新增数据</a-button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { VueDraggable } from "vue-draggable-plus";
-import { computed, type ComponentOptions } from "vue";
-import type { Field, Fields } from "@/types/control";
+import type { Field } from "@/types/control";
 import { getComponents } from "../../config";
+import { randomString } from "@/utils/index";
 const {
   label,
   edit = false,
   schema,
 } = defineProps<{ label: string; edit?: Boolean; schema: Field }>();
 
-interface Emits {
-  (e: "update:list", value: any): void;
-}
-const emits = defineEmits<Emits>();
-
-const field = computed({
-  get: () => {
-    console.log(model?.value, "fieldvalue");
-    return model?.value || [];
-  },
-  set: (value) => {
-    emits("update:list", value);
-  },
+const model = defineModel<Array<{ id: any; [k: string]: any }>>({
+  default: [],
 });
-const model = defineModel<any>();
+
+const addItem = () => {
+  model.value.push({
+    id: randomString(),
+  });
+};
+
+const delItem = (id: any) => {
+  model.value = model.value?.filter((v) => v.id !== id);
+};
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.nav-item {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .nav-add {
+  }
+
+  .nav-delete {
+    display: none;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 16px;
+    height: 16px;
+    line-height: 14px;
+    border-radius: 50%;
+    background: #b3b3b3;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    z-index: 4;
+    cursor: pointer;
+  }
+
+  &:hover {
+    .nav-delete {
+      display: block;
+    }
+  }
+}
+</style>

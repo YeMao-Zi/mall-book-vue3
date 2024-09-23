@@ -1,6 +1,6 @@
 <template>
   <ConfigItem :label="label">
-    <el-input v-model="model" placeholder="请输入跳转链接或路径" />
+    <a-input v-model="model" placeholder="请输入跳转链接或路径" />
   </ConfigItem>
 </template>
 
@@ -8,7 +8,7 @@
 import ConfigItem from "@/components/ConfigItem.vue";
 import { type ComponentOptions } from "vue";
 const props = defineProps<{ label: string }>();
-const model = defineModel<ComponentOptions>();
+const model = defineModel<string>();
 </script>
 
 <style></style>

@@ -1,68 +1,72 @@
 <template>
   <config-item :label="label">
-    <div
-      class="relative w-[100px] h-[100px] flex justify-center items-center uploader-content"
-    >
-      <template v-if="model">
-        <div class="file-hover">
-          <Icon
-            style="color: #fff"
-            icon="ep:delete"
-            @click="handleRemove"
-          ></Icon>
-        </div>
-        <img :src="model" class="avatar" />
-      </template>
-      <el-upload
-        v-else
+    <div class="relative">
+      <a-upload
+        action="/"
+        @change="onChange"
+        @progress="onProgress"
         :show-file-list="false"
-        action="#"
         :accept="accept"
-        :http-request="uploadpromise"
-        :on-remove="handleRemove"
       >
-        <div class="w-[100px] h-[100px] flex justify-center items-center">
-          <Icon icon="ep:plus" />
-        </div>
-      </el-upload>
+        <template #upload-button>
+          <div
+            :class="`arco-upload-list-item${
+              fileOptions && fileOptions.status === 'error'
+                ? ' arco-upload-list-item-error'
+                : ''
+            }`"
+          >
+            <div
+              class="arco-upload-list-picture custom-upload-avatar"
+              v-if="model"
+            >
+              <img :src="model" />
+              <div class="arco-upload-list-picture-mask">
+                <IconEdit />
+              </div>
+              <a-progress
+                v-if="
+                  fileOptions.status === 'uploading' &&
+                  fileOptions.percent < 100
+                "
+                :percent="fileOptions.percent"
+                type="circle"
+                size="mini"
+                :style="{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translateX(-50%) translateY(-50%)',
+                }"
+              />
+            </div>
+            <div class="arco-upload-picture-card" v-else>
+              <div class="arco-upload-picture-card-text">
+                <IconPlus />
+              </div>
+            </div>
+          </div>
+        </template>
+      </a-upload>
     </div>
   </config-item>
 </template>
 
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
 import ConfigItem from "@/components/ConfigItem.vue";
 import { ref } from "vue";
-import { ElMessage } from "element-plus";
-import type { UploadProps, UploadRawFile, UploadUserFile } from "element-plus";
+import { UploadInstance } from "@arco-design/web-vue";
 
 const props = defineProps<{ label: string }>();
 
+const fileOptions = ref();
+
 const model = defineModel<string>();
 
-// 限制大小
-const sizeLimit = ref(8);
 // 限制格式
 const accept = ref("image/jpeg,image/png,image/gif,image/jpg,image/bmp");
 
-// 检查格式、大小
-const listLimit = (file: UploadRawFile) => {
-  const typeLimitBool = accept.value
-    .split(",")
-    .some((_type) => file.type === _type);
-  if (!typeLimitBool) {
-    ElMessage.error("请上传格式正确的图片");
-  }
-
-  const sizeLimitBool = file.size / 1024 / 1024 < sizeLimit.value;
-  if (!sizeLimitBool) {
-    ElMessage.error(`请使用小于${sizeLimit.value}MB的图片!`);
-  }
-  let result = sizeLimitBool && typeLimitBool;
-  return result;
-};
-
-const getBase64 = (file: UploadRawFile): Promise<any> => {
+const getBase64 = (file: File): Promise<any> => {
   return new Promise((resolve, reject) => {
     let reader = new FileReader();
     let fileResult = "";
@@ -87,51 +91,22 @@ const getBase64 = (file: UploadRawFile): Promise<any> => {
   });
 };
 
-const getFilePath = async (file: UploadRawFile) => {
-  model.value = await getBase64(file);
+const onChange: UploadInstance["onChange"] = (_, currentFile) => {
+  fileOptions.value = {
+    ...currentFile,
+  };
 };
 
-const uploadpromise: UploadProps["httpRequest"] = (param) => {
-  const file = param.file;
-  return new Promise((resolve, reject) => {
-    if (listLimit(file)) {
-      getFilePath(file);
-    } else {
-      reject(new Error("格式不正确"));
-    }
-  });
-};
-
-const handleRemove = (file: any) => {
-  model.value = "";
+const onProgress: UploadInstance["onProgress"] = async (currentFile) => {
+  fileOptions.value = currentFile;
+  if (currentFile.file) {
+    model.value = await getBase64(currentFile.file);
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.uploader-content {
-  border: 1px dashed var(--el-border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--el-transition-duration-fast);
-
-  .file-hover {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--el-overlay-color-lighter);
-    display: none;
-  }
-}
-
-.uploader-content:hover {
-  border-color: var(--el-color-primary);
-
-  .file-hover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.arco-upload-list-item {
+  margin-top: 0;
 }
 </style>

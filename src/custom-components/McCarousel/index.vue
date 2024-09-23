@@ -1,5 +1,5 @@
 <template>
-  <div class="McContainer" :style="contentStyle">123</div>
+  <div class="McContainer" :style="contentStyle"></div>
 </template>
 
 <script setup lang="ts">
