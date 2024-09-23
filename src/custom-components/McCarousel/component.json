@@ -32,7 +32,19 @@
     },
     "attrs": {
       "label": "轮播设置",
-      "type": "object"
+      "type": "object",
+      "child": {
+        "autoplay": {
+          "label": "自动播放",
+          "type": "switch",
+          "value": true
+        },
+        "loop": {
+          "label": "是否循环",
+          "type": "switch",
+          "value": true
+        }
+      }
     },
     "styles": {
       "label": "走马灯样式",

@@ -26,6 +26,7 @@
               </div>
               <a-progress
                 v-if="
+                  fileOptions &&
                   fileOptions.status === 'uploading' &&
                   fileOptions.percent < 100
                 "

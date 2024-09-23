@@ -6,6 +6,8 @@ import "@/style/index.css";
 import "tailwindcss/tailwind.css";
 import "@arco-design/web-vue/dist/arco.css";
 import { globalComponents } from "@/utils/config";
+import { register } from 'swiper/element/bundle';
+register();
 // import { test } from "./utils/index";
 
 // test();

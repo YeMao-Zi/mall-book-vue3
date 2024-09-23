@@ -23,4 +23,5 @@ export interface BoxBorder {
 export interface MainProps {
   styles?: Record<string, any>;
   children?: any;
+  attrs?: Record<string, any>;
 }
