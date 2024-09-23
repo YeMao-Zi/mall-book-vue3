@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-05 16:09:57
+ * @LastEditTime: 2024-09-23 15:27:44
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -43,6 +43,9 @@
     </div>
     <!-- 物料配置 -->
     <div class="control-config w-[360px] overflow-auto p-[10px] bg-white">
+      <div class="pb-1 mb-1 font-bold text-[20px] border-b-2">
+        {{ curComponent?.name || "页面" }}
+      </div>
       <customSchemaTemplate
         v-if="curComponent"
         v-model="curComponent"
@@ -58,10 +61,10 @@
 </template>
 
 <script setup lang="ts">
-import { type UseDraggableReturn, VueDraggable } from "vue-draggable-plus";
+import { VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
 import { useSchema } from "@/custom-components/config";
-import { ref, provide, computed, watch, useTemplateRef } from "vue";
+import { ref, provide, computed, useTemplateRef } from "vue";
 import { deepClone, randomString } from "@/utils/index";
 import type {
   SetCurComponent,
@@ -96,7 +99,6 @@ const configure = computed(() => {
 
 const handleClone = (model: InitializingItem) => {
   const { children } = model;
-  console.log(children, "model", model);
   return {
     ...deepClone(model),
     id: randomString(),
@@ -119,8 +121,6 @@ const deleteComponent: DeleteComponent = (id, list = widgets.value) => {
   // 找到目标，删除无名
   if (index >= 0) {
     list.splice(index, 1);
-    console.log("删除成功");
-    console.log(list);
   } else {
     // 递归子物料
     list

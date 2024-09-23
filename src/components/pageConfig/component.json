@@ -3,7 +3,7 @@
   "icon": "",
   "fields": {
     "styles": {
-      "label": "容器样式",
+      "label": "页面样式",
       "type": "object",
       "child": {
         "backgroundColor": {

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, StyleValue, onMounted } from "vue";
+import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
 import { getMainStyleByProps, isNumber } from "../utils";
 
@@ -50,8 +50,6 @@ const contentStyle = computed<StyleValue>(() => {
     height: isNumber(height) ? `${height}px` : height,
   };
 });
-
-onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>

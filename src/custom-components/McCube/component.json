@@ -3,6 +3,14 @@
   "icon": "mingcute:grid-line",
   "children": [],
   "fields": {
+    "cube": {
+      "label": "魔方数据",
+      "type": "cube",
+      "value": {
+        "row": 5,
+        "column": 5
+      }
+    },
     "styles": {
       "label": "容器样式",
       "type": "object",
