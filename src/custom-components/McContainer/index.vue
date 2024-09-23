@@ -9,16 +9,22 @@ import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
 import { getMainStyleByProps, isNumber } from "../utils";
 
-const props = defineProps<MainProps>();
+const { styles = {} } = defineProps<MainProps>();
 
 const contentStyle = computed<StyleValue>(() => {
-  if (!props?.styles) return {};
-  const mainStyle = getMainStyleByProps(props.styles);
-  const { height = "auto" } = props.styles;
-
+  if (!styles) return {};
+  const mainStyle = getMainStyleByProps(styles);
+  const { height = "auto", backgroundImage } = styles;
+  const background = backgroundImage
+    ? {
+        "background-image": `url(${backgroundImage})`,
+        "background-repeat": "no-repeat",
+      }
+    : {};
   return {
     ...mainStyle,
     height: isNumber(height) ? `${height}px` : height,
+    ...background,
   };
 });
 </script>
