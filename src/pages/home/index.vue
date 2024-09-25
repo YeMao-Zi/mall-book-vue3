@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="page">
-      <!-- <div class="page-header">
-      <nav-bar />
-    </div> -->
+      <div class="page-header">
+        <nav-bar />
+      </div>
       <div class="page-body">
         <control />
       </div>
@@ -20,11 +20,13 @@
   width: 100%;
   .page-header {
     height: 56px;
+    background-color: #fff;
+    margin-bottom: 5px;
   }
   .page-body {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 61px);
     width: 100%;
-    margin-top: 56px;
+    // margin-top: 56px;
     overflow: auto;
   }
 }

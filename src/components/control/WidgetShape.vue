@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 13:34:09
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-05 16:08:00
+ * @LastEditTime: 2024-09-25 13:26:41
  * @FilePath: \mall-book-vue3\src\components\control\WidgetShape.vue
  * @Description: 物流容器（管理工具栏）
 -->

@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
-import { getMainStyleByProps, isNumber } from "../utils";
+import { getMainStyle, isNumber } from "../utils";
 
 const {
   attrs = {},
@@ -42,7 +42,7 @@ const swiperAttrs = computed(() => {
 
 const contentStyle = computed<StyleValue>(() => {
   if (!styles) return {};
-  const mainStyle = getMainStyleByProps(styles);
+  const mainStyle = getMainStyle(styles);
   const { height = "auto" } = styles;
 
   return {

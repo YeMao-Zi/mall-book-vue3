@@ -23,17 +23,12 @@
 <script setup lang="ts">
 import type { Field, ComponentOptions } from "@/types/control";
 import { getComponents } from "./config";
-import { watch } from "vue";
 
 const model = defineModel<ComponentOptions>();
 
-const props = defineProps<{
+defineProps<{
   shemaField?: Field;
 }>();
-
-watch(model, () => {
-  console.log(props, "model", model);
-});
 </script>
 
 <style></style>

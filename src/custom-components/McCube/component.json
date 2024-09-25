@@ -7,38 +7,24 @@
       "label": "魔方数据",
       "type": "cube",
       "value": {
-        "row": 5,
-        "column": 5
+        "row": 6,
+        "column": 5,
+        "list": []
       }
     },
     "styles": {
       "label": "容器样式",
       "type": "object",
       "child": {
-        "paddingTop": {
-          "label": "上内间距",
-          "type": "number",
-          "value": 10
-        },
-        "paddingBottom": {
-          "label": "下内间距",
-          "type": "number",
-          "value": 10
-        },
-        "paddingLeft": {
-          "label": "左内间距",
-          "type": "number",
-          "value": 10
-        },
-        "paddingRight": {
-          "label": "右内间距",
-          "type": "number",
-          "value": 10
-        },
         "backgroundColor": {
           "label": "背景色",
           "type": "color",
           "value": "rgba(255, 255, 255, 0.5)"
+        },
+        "gap": {
+          "label": "单项间隔",
+          "type": "number",
+          "value": 0
         },
         "borderWidth": {
           "label": "边框宽度",

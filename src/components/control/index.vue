@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-23 15:27:44
+ * @LastEditTime: 2024-09-25 17:14:47
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -64,7 +64,7 @@
 import { VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
 import { useSchema } from "@/custom-components/config";
-import { ref, provide, computed, useTemplateRef } from "vue";
+import { ref, provide, computed } from "vue";
 import { deepClone, randomString } from "@/utils/index";
 import type {
   SetCurComponent,
@@ -76,9 +76,10 @@ import { ControlInject } from "@/types/control";
 import customSchemaTemplate from "@/custom-schema-template/index.vue";
 import { pageCmp, pageShemaField } from "../pageConfig/config";
 
-const draggableRef = useTemplateRef("draggableRef");
+import { widgets } from "./config";
+
 const initial = useSchema();
-const widgets = ref<ComponentOptions[]>([]);
+// const widgets = ref<ComponentOptions[]>([]);
 const curComponent = ref<ComponentOptions>();
 
 // 当前选中物料的配置
@@ -87,14 +88,6 @@ const curShemaField = computed(() => {
   const shemaField = initial.fields[curComponent?.value.component];
   console.log(shemaField, "shemaField");
   return shemaField;
-});
-
-// 可导出的配置信息
-const configure = computed(() => {
-  return {
-    pageCmp,
-    widgets,
-  };
 });
 
 const handleClone = (model: InitializingItem) => {
@@ -142,10 +135,6 @@ provide(ControlInject, {
   curComponent: curComponent,
   setCurComponent,
   deleteComponent,
-});
-
-defineExpose({
-  configure,
 });
 </script>
 

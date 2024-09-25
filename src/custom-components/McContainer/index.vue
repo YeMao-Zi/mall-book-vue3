@@ -7,14 +7,17 @@
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
-import { getMainStyleByProps, isNumber } from "../utils";
+import { getMainStyle, isNumber, getMarginStyle } from "../utils";
 
 const { styles = {} } = defineProps<MainProps>();
 
 const contentStyle = computed<StyleValue>(() => {
   if (!styles) return {};
-  const mainStyle = getMainStyleByProps(styles);
-  const { height = "auto", backgroundImage } = styles;
+  const mainStyle = getMainStyle(styles);
+  const {
+    height = "auto",
+    backgroundImage,
+  } = styles;
   const background = backgroundImage
     ? {
         "background-image": `url(${backgroundImage})`,
@@ -24,6 +27,7 @@ const contentStyle = computed<StyleValue>(() => {
   return {
     ...mainStyle,
     height: isNumber(height) ? `${height}px` : height,
+    ...getMarginStyle(styles),
     ...background,
   };
 });
