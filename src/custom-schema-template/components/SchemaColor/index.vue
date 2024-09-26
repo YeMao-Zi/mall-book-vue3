@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { type ComponentOptions } from "vue";
-const props = defineProps<{ label: string }>();
+defineProps<{ label: string }>();
 const model = defineModel<string>();
 </script>
 

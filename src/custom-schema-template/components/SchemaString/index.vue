@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import ConfigItem from "@/components/ConfigItem.vue";
-const props = defineProps<{ label: string }>();
+defineProps<{ label: string }>();
 
 const model = defineModel<string>();
 </script>

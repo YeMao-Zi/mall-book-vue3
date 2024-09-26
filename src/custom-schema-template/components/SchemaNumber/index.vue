@@ -6,10 +6,9 @@
 
 <script setup lang="ts">
 import ConfigItem from "@/components/ConfigItem.vue";
-import { type ComponentOptions } from "vue";
-const props = defineProps<{ label: string; attr?: any }>();
+defineProps<{ label: string; attr?: any }>();
 
-const model = defineModel<ComponentOptions>();
+const model = defineModel<number>();
 </script>
 
 <style></style>
