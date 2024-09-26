@@ -1,6 +1,6 @@
 {
   "name": "魔方",
-  "icon": "mingcute:grid-line",
+  "icon": "fluent-mdl2:snap-to-grid",
   "children": [],
   "fields": {
     "cube": {
@@ -23,21 +23,6 @@
         },
         "gap": {
           "label": "单项间隔",
-          "type": "number",
-          "value": 0
-        },
-        "borderWidth": {
-          "label": "边框宽度",
-          "type": "number",
-          "value": 1
-        },
-        "borderColor": {
-          "label": "边框颜色",
-          "type": "color",
-          "value": "rgba(209, 209, 212, 0.95)"
-        },
-        "borderRadius": {
-          "label": "边框圆角",
           "type": "number",
           "value": 0
         }

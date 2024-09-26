@@ -1,0 +1,55 @@
+{
+  "name": "图文导航",
+  "icon": "material-symbols:image-aspect-ratio-outline-rounded",
+  "fields": {
+    "tabList": {
+      "label": "导航栏列表",
+      "type": "array",
+      "child": {
+        "label": {
+          "label": "导航名称",
+          "type": "string",
+          "value": "默认导航"
+        },
+        "image": {
+          "label": "图片上传",
+          "type": "upload",
+          "value": ""
+        },
+        "jump": {
+          "label": "页面跳转",
+          "type": "jump",
+          "value": ""
+        }
+      },
+      "value": [
+        {
+          "id": "0001",
+          "label": "标签1",
+          "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png"
+        },
+        {
+          "id": "0002",
+          "label": "标签2",
+          "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png"
+        },
+        {
+          "id": "0003",
+          "label": "标签3",
+          "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png"
+        }
+      ]
+    },
+    "styles": {
+      "label": "导航栏样式",
+      "type": "object",
+      "child": {
+        "titleColor": {
+          "label": "文本颜色",
+          "type": "color",
+          "value": "#fff"
+        }
+      }
+    }
+  }
+}

@@ -58,7 +58,7 @@ import ConfigItem from "@/components/ConfigItem.vue";
 import { ref } from "vue";
 import { UploadInstance } from "@arco-design/web-vue";
 
-const props = defineProps<{ label: string }>();
+defineProps<{ label: string }>();
 
 const fileOptions = ref();
 

@@ -54,7 +54,7 @@ const contentStyle = computed<StyleValue>(() => {
 
 <style lang="scss" scoped>
 .McContainer {
-  word-break: break-all;
+  overflow: hidden;
 }
 
 swiper-container {

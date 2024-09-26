@@ -2,29 +2,27 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-25 17:00:35
+ * @LastEditTime: 2024-09-26 10:12:32
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
 <template>
   <div class="McCube" ref="McCubeRef" :style="contentStyle">
-    <template v-if="contentWidth">
-      <div
-        class="cube-box"
-        v-for="(item, index) in cube.list"
-        :style="getBoxStyle(item)"
-        :key="index"
-      >
-        <div class="cube-item" :style="getItemStyle(item)">
-          <img
-            v-if="item.imagePath"
-            class="cube-item-img"
-            :src="item.imagePath"
-          />
-          <div class="empty" v-else></div>
-        </div>
+    <div
+      class="cube-box"
+      v-for="(item, index) in cube.list"
+      :style="getBoxStyle(item)"
+      :key="index"
+    >
+      <div class="cube-item" :style="getItemStyle(item)">
+        <img
+          v-if="item.imagePath"
+          class="cube-item-img"
+          :src="item.imagePath"
+        />
+        <div class="empty" v-else></div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -47,7 +45,7 @@ interface ListItem {
 
 const McCubeRef = useTemplateRef("McCubeRef");
 
-const contentWidth = ref<number>();
+const contentWidth = ref<number>(375);
 
 const { styles, cube } = defineProps<
   MainProps & {
@@ -61,6 +59,7 @@ const { styles, cube } = defineProps<
 
 const contentStyle = computed(() => {
   if (!styles) return;
+  // console.log(cube, "cube");
   const column = cube.column;
   const row = cube.row;
   const mainStyle = getMainStyle(styles);
@@ -68,13 +67,12 @@ const contentStyle = computed(() => {
   return {
     ...mainStyle,
     borderRadius: `${borderRadius}px`,
-    width: "100%",
-    "aspect-ratio": `${column} / ${row}`,
+    width: contentWidth.value + "px",
+    height: (contentWidth.value / column) * row + "px",
   };
 });
 
 const getBoxStyle = (item: ListItem) => {
-  if (!contentWidth.value) return;
   const column = cube.column;
   const row = cube.column;
   const width = (contentWidth.value / column) * item.width;
@@ -97,7 +95,8 @@ const getItemStyle = (item: ListItem) => {
 function setContentWidth() {
   if (!McCubeRef.value?.parentNode) return;
   const parentNode = McCubeRef.value.parentNode as Element;
-  contentWidth.value = parentNode.clientWidth - styles!.borderWidth * 2;
+  // contentWidth.value = parentNode.clientWidth - styles!.borderWidth * 2;
+  contentWidth.value = parentNode.clientWidth;
 }
 
 onUpdated(() => {
@@ -134,7 +133,7 @@ onMounted(() => {
   .empty {
     width: 100%;
     height: 100%;
-    background-color: var(--h5-color-bg);
+    background-color: red;
   }
 }
 </style>

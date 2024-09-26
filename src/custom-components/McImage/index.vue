@@ -7,7 +7,7 @@ import { type MainProps } from "../type";
 import { computed } from "vue";
 import baseImg from "./baseImg";
 const defaultImagePath = baseImg;
-const props = defineProps<
+const {styles} = defineProps<
   MainProps & {
     imageValue: {
       imagePath?: string;
@@ -17,8 +17,8 @@ const props = defineProps<
 >();
 
 const imageStyle = computed(() => {
-  if (!props.styles) return;
-  const { borderRadius, height } = props.styles;
+  if (!styles) return;
+  const { borderRadius, height } = styles;
   return {
     borderRadius: `${borderRadius}px`,
     height: `${height}px`,
