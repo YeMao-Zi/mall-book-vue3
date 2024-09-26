@@ -42,7 +42,7 @@ export const getMainStyle = (props: Record<string, any>): CSSProperties => {
     ...getPaddingStyle(props),
     ...getBorderStyle(props),
     ...getMarginStyle(props),
-    backgroundColor: backgroundColor,
+    backgroundColor,
   };
 };
 

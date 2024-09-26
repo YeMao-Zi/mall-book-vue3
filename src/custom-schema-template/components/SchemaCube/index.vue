@@ -224,12 +224,15 @@ const findRange = (key1: number, key2: number, arr: number[][]) => {
 };
 
 const clickBox = (e: any) => {
-  console.log(e.target.dispatchEvent);
   const key = Number(e.currentTarget.dataset.k);
   if (!edit) {
     edit = key;
     editKeys.value.push(key);
   } else {
+    if (!editKeys.value.includes(key)) return;
+    if (key === edit) {
+      editKeys.value = [key];
+    }
     const editStart = editKeys.value[0];
     const editEnd = editKeys.value.slice(-1)[0];
 
@@ -290,6 +293,7 @@ const handleMove = (e: any) => {
 };
 
 const handleItemClick = (item: ListItem) => {
+  if (edit) return;
   curItem.value = item;
 };
 
