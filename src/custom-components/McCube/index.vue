@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-26 10:12:32
+ * @LastEditTime: 2024-09-26 13:19:05
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
@@ -133,7 +133,7 @@ onMounted(() => {
   .empty {
     width: 100%;
     height: 100%;
-    background-color: red;
+    background-color: var(--h5-color-bg);
   }
 }
 </style>

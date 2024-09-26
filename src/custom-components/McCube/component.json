@@ -16,6 +16,24 @@
       "label": "容器样式",
       "type": "object",
       "child": {
+        "marginTop": {
+          "label": "上下移动",
+          "type": "number",
+          "value": 0,
+          "attr": {
+            "min": -50,
+            "max": 50
+          }
+        },
+        "marginLeft": {
+          "label": "左右移动",
+          "type": "number",
+          "value": 0,
+          "attr": {
+            "min": -50,
+            "max": 50
+          }
+        },
         "backgroundColor": {
           "label": "背景色",
           "type": "color",
