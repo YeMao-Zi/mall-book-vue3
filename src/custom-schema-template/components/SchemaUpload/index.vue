@@ -21,8 +21,11 @@
               v-if="model"
             >
               <img :src="model" />
-              <div class="arco-upload-list-picture-mask">
+              <div
+                class="arco-upload-list-picture-mask gap-1 flex justify-center items-center"
+              >
                 <IconEdit />
+                <IconDelete @click.stop.self="handleDelete" />
               </div>
               <a-progress
                 v-if="
@@ -103,6 +106,10 @@ const onProgress: UploadInstance["onProgress"] = async (currentFile) => {
   if (currentFile.file) {
     model.value = await getBase64(currentFile.file);
   }
+};
+
+const handleDelete = () => {
+  model.value = undefined;
 };
 </script>
 

@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-27 09:49:23
+ * @LastEditTime: 2024-09-27 10:00:32
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
@@ -59,7 +59,7 @@ const { styles, cube } = defineProps<
 
 const contentStyle = computed(() => {
   if (!styles) return;
-  console.log(cube, "cube");
+  // console.log(cube, "cube");
   const column = cube.column;
   const row = cube.row;
   const mainStyle = getMainStyle(styles);
