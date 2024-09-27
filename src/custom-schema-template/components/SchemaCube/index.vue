@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-1" :key="key">
+  <div class="mb-1">
     <div class="p-1 bg-slate-200 text-slate-600">
       <span>{{ label }}</span>
     </div>
@@ -74,7 +74,6 @@
 <script setup lang="ts">
 import ConfigItem from "@/components/ConfigItem.vue";
 import { computed, ref, watch } from "vue";
-import { randomString } from "@/utils/index";
 defineProps<{ label: string }>();
 
 interface ListItem {
@@ -100,10 +99,6 @@ const model = defineModel<{
   column: number;
   list: Array<ListItem>;
 }>();
-
-const key = computed(() => {
-  return model.value!.row + randomString() + model.value!.column;
-});
 
 watch([() => model.value?.row, () => model.value?.column], () => {
   model.value!.list = [];
@@ -253,7 +248,7 @@ const clickBox = (e: any) => {
       height: Math.abs(editStartPosition.r - editEndPosition.r) + 1,
       startKey: editStart,
       endKey: editEnd,
-      styles: defaultItemStyles,
+      styles: { ...defaultItemStyles },
     };
     model.value?.list.push(temp);
     curItem.value = temp;
@@ -274,21 +269,6 @@ const handleMove = (e: any) => {
   if (rangeKeys.filter((v) => disabledKeys.includes(v)).length) return;
   /**END */
 
-  const moveStartPosition = {
-    c: findPosition(moveStartKey)!.c,
-    r: findPosition(moveStartKey)!.r,
-  };
-  const moveEndPosition = {
-    c: findPosition(moveEndKey)!.c,
-    r: findPosition(moveEndKey)!.r,
-  };
-  const temp = {
-    top: Math.min(moveStartPosition.c, moveEndPosition.c),
-    left: Math.min(moveStartPosition.r, moveEndPosition.r),
-    bottom: Math.max(moveStartPosition.c, moveEndPosition.c),
-    right: Math.max(moveStartPosition.r, moveEndPosition.r),
-  };
-  // console.log(temp, "handleMove", moveStartPosition, moveEndPosition);
   editKeys.value = rangeKeys;
 };
 
@@ -308,11 +288,10 @@ const handleDeleteItem = (index: number) => {
   position: relative;
   border-bottom: 1px solid var(--border-base);
   border-right: 1px solid var(--border-base);
-}
-
-.cube-bar {
-  display: flex;
-  width: 100%;
+  &-bar {
+    display: flex;
+    width: 100%;
+  }
 }
 
 .cube-box {
@@ -344,7 +323,6 @@ const handleDeleteItem = (index: number) => {
   box-sizing: border-box;
   border-top: 1px solid var(--border-base);
   border-left: 1px solid var(--border-base);
-  // border: 1px solid var(--border-base);
   z-index: 2;
   cursor: pointer;
   background-repeat: no-repeat;
