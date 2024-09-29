@@ -1,5 +1,5 @@
 <template>
-  <div class="McTab" :style="contentStyle">
+  <div class="McBlock" :style="contentStyle">
     <slot></slot>
   </div>
 </template>
@@ -14,17 +14,25 @@ const { styles = {} } = defineProps<MainProps>();
 const contentStyle = computed<StyleValue>(() => {
   if (!styles) return {};
   const mainStyle = getMainStyle(styles);
-  const { height = "auto" } = styles;
+  const { height = "auto", backgroundImage } = styles;
+  const background = backgroundImage
+    ? {
+        "background-image": `url(${backgroundImage})`,
+        "background-repeat": "no-repeat",
+        "background-size": "cover",
+      }
+    : {};
   return {
     ...mainStyle,
     height: isNumber(height) ? `${height}px` : height,
     ...getMarginStyle(styles),
+    ...background,
   };
 });
 </script>
 
 <style lang="scss" scoped>
-.McTab {
+.McBlock {
   word-break: break-all;
 }
 </style>

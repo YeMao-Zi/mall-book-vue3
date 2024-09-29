@@ -13,7 +13,7 @@
       }
     },
     "styles": {
-      "label": "容器样式",
+      "label": "魔方配置",
       "type": "object",
       "child": {
         "marginTop": {
