@@ -11,21 +11,17 @@
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
-import { getMainStyle, isNumber } from "../utils";
+import { getMainStyle } from "../utils";
 
-const {
-  attrs = {},
-  styles = {},
-  list = [],
-} = defineProps<
-  MainProps & {
-    list: Array<{
-      id: any;
-      imagePath?: string;
-      jumpPath?: string;
-    }>;
-  }
->();
+interface Props extends MainProps {
+  list: Array<{
+    id: any;
+    imagePath?: string;
+    jumpPath?: string;
+  }>;
+}
+
+const { attrs = {}, styles = {}, list = [] } = defineProps<Props>();
 
 const swiperAttrs = computed(() => {
   const { autoplay = true, loop } = attrs;
@@ -41,13 +37,10 @@ const swiperAttrs = computed(() => {
 });
 
 const wrapStyle = computed<StyleValue>(() => {
-  if (!styles) return {};
   const mainStyle = getMainStyle(styles);
-  const { height = "auto" } = styles;
 
   return {
     ...mainStyle,
-    height: isNumber(height) ? `${height}px` : height,
   };
 });
 </script>

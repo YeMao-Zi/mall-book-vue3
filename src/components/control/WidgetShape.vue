@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 13:34:09
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-25 13:26:41
+ * @LastEditTime: 2024-09-30 15:04:51
  * @FilePath: \mall-book-vue3\src\components\control\WidgetShape.vue
  * @Description: 物流容器（管理工具栏）
 -->
@@ -17,7 +17,14 @@
     <div class="shape-dashed event-none"></div>
 
     <!-- 组件工具栏 -->
-    <div v-if="show" class="shape-tab" :style="{ right: getRightStyle() }">
+    <div
+      v-if="show"
+      class="shape-tab"
+      :style="{
+        right: getRightStyle(),
+        zIndex: isCurComponent(widget.id) ? 200 : 100,
+      }"
+    >
       <template v-if="isCurComponent(widget.id)">
         <Icon
           class="cursor-pointer hover:text-blue-600"
@@ -87,8 +94,10 @@ onMounted(() => {
 
   .shape-solid {
     position: absolute;
-    top: 0;
-    left: 0;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    top: -5px;
+    left: -5px;
     right: 0;
     bottom: 0;
     border: solid 2px var(--color-theme);

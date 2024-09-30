@@ -3,7 +3,7 @@
     <ul v-if="model">
       <li v-for="(s, key, index) in shemaField" :key="index">
         <component
-          :is="getComponents(s.type)"
+          :is="getCorrelation(s, key) && getComponents(s.type)"
           :key="index"
           v-bind="s"
           v-model="model[key]"
@@ -21,10 +21,27 @@
 </template>
 
 <script setup lang="ts">
-import type { Field, ComponentOptions } from "@/types/control";
+import { inject } from "vue";
+import {
+  type Field,
+  type ComponentOptions,
+  ControlInject,
+} from "@/types/control";
 import { getComponents } from "./config";
 
+const controlInject = inject(ControlInject);
+
 const model = defineModel<ComponentOptions>();
+
+const getCorrelation = (s: any, key: any) => {
+  const curComponentInfo = controlInject?.curComponent.value;
+  if (!curComponentInfo) return true;
+  if (s.correlation) {
+    const evalStr = `curComponentInfo.${s.correlation}`;
+    return eval(evalStr);
+  }
+  return true;
+};
 
 defineProps<{
   shemaField?: Field;

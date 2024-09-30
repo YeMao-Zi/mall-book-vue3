@@ -7,17 +7,13 @@
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
-import { getMainStyle, isNumber, getMarginStyle } from "../utils";
+import { getMainStyle } from "../utils";
 
 const { styles = {} } = defineProps<MainProps>();
 
 const wrapStyle = computed<StyleValue>(() => {
-  if (!styles) return {};
   const mainStyle = getMainStyle(styles);
-  const {
-    height = "auto",
-    backgroundImage,
-  } = styles;
+  const { height = "auto", backgroundImage } = styles;
   const background = backgroundImage
     ? {
         "background-image": `url(${backgroundImage})`,
@@ -26,8 +22,6 @@ const wrapStyle = computed<StyleValue>(() => {
     : {};
   return {
     ...mainStyle,
-    height: isNumber(height) ? `${height}px` : height,
-    ...getMarginStyle(styles),
     ...background,
   };
 });
@@ -36,6 +30,5 @@ const wrapStyle = computed<StyleValue>(() => {
 <style lang="scss" scoped>
 .McContainer {
   word-break: break-all;
-  overflow: hidden;
 }
 </style>

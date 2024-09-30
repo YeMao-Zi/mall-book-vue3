@@ -1,33 +1,51 @@
 <template>
   <div class="McTab" :style="wrapStyle">
-    <div></div>
+    <div class="item" v-for="item in tabList" :key="item.id" :style="itemStyle">
+      <img v-if="attrs.type !== 'text'" :style="imageStyle" :src="item.imagePath" />
+      <span v-if="attrs.type !== 'image'" class="">{{ item.label }}</span>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
-import { getMainStyle, isNumber, getMarginStyle } from "../utils";
+import { getMainStyle } from "../utils";
 
-const {
-  styles = {},
-  tabList,
-  attrs,
-} = defineProps<
-  MainProps & {
-    tabList: any;
-    attrs: any;
-  }
->();
+interface TabItem {
+  id: string;
+  label: string;
+  imagePath: string;
+  jumpPath: string;
+}
+
+interface Props extends MainProps {
+  tabList: Array<TabItem>;
+  attrs: any;
+}
+
+const { styles = {}, tabList, attrs } = defineProps<Props>();
 
 const wrapStyle = computed<StyleValue>(() => {
-  if (!styles) return {};
   const mainStyle = getMainStyle(styles);
-  const { height = "auto" } = styles;
   return {
     ...mainStyle,
-    height: isNumber(height) ? `${height}px` : height,
-    ...getMarginStyle(styles),
+  };
+});
+
+const itemStyle = computed<StyleValue>(() => {
+  const { itemGap } = attrs;
+  return {
+    gap: `${itemGap}px`,
+  };
+});
+
+const imageStyle = computed<StyleValue>(() => {
+  const { imageWidth, imageHeight, imageRadius } = attrs;
+  return {
+    width: `${imageWidth}px`,
+    height: `${imageHeight}px`,
+    borderRadius: `${imageRadius}px`,
   };
 });
 </script>
@@ -35,5 +53,14 @@ const wrapStyle = computed<StyleValue>(() => {
 <style lang="scss" scoped>
 .McTab {
   display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 auto;
 }
 </style>

@@ -33,10 +33,15 @@
             "max": 50
           }
         },
+        "borderRadius": {
+          "label": "圆角",
+          "type": "number",
+          "value": 0
+        },
         "backgroundColor": {
           "label": "背景色",
           "type": "color",
-          "value": "rgba(255, 255, 255, 0.5)"
+          "value": "rgba(255, 255, 255, 0)"
         },
         "gap": {
           "label": "单项间隔",

@@ -31,13 +31,20 @@ import { VueDraggable } from "vue-draggable-plus";
 import type { Field } from "@/types/control";
 import { getComponents } from "../../config";
 import { randomString } from "@/utils/index";
-const {
-  label,
-  edit = false,
-  schema,
-} = defineProps<{ label: string; edit?: Boolean; schema: Field }>();
 
-const model = defineModel<Array<{ id: any; [k: string]: any }>>({
+interface Props {
+  label: string;
+  edit?: Boolean;
+  schema: Field;
+}
+const { label, edit = false, schema } = defineProps<Props>();
+
+interface ModelItem {
+  id: any;
+  [k: string]: any;
+}
+
+const model = defineModel<Array<ModelItem>>({
   default: [],
 });
 
@@ -60,9 +67,6 @@ const delItem = (id: any) => {
   border-radius: 2px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  .nav-add {
-  }
 
   .nav-delete {
     display: none;

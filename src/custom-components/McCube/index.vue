@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-27 10:00:32
+ * @LastEditTime: 2024-09-30 16:12:38
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { type MainProps } from "../type";
 import { computed, onMounted, onUpdated, ref, useTemplateRef } from "vue";
-import { getMainStyle, getBorderStyle } from "../utils";
+import { getMainStyle } from "../utils";
 
 interface ListItem {
   top: number;
@@ -43,30 +43,27 @@ interface ListItem {
   styles: Record<string, any>;
 }
 
+interface Props extends MainProps {
+  cube: {
+    row: number;
+    column: number;
+    list: Array<ListItem>;
+  };
+}
+
 const McCubeRef = useTemplateRef("McCubeRef");
 
 const contentWidth = ref<number>(375);
 
-const { styles, cube } = defineProps<
-  MainProps & {
-    cube: {
-      row: number;
-      column: number;
-      list: Array<ListItem>;
-    };
-  }
->();
+const { styles = {}, cube } = defineProps<Props>();
 
 const wrapStyle = computed(() => {
-  if (!styles) return;
   // console.log(cube, "cube");
   const column = cube.column;
   const row = cube.row;
   const mainStyle = getMainStyle(styles);
-  const { borderRadius } = styles;
   return {
     ...mainStyle,
-    borderRadius: `${borderRadius}px`,
     width: contentWidth.value + "px",
     height: (contentWidth.value / column) * row + "px",
   };
@@ -88,7 +85,7 @@ const getBoxStyle = (item: ListItem) => {
 
 const getItemStyle = (item: ListItem) => {
   return {
-    ...getBorderStyle(item.styles),
+    ...getMainStyle(item.styles),
   };
 };
 

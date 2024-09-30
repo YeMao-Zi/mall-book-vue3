@@ -88,17 +88,19 @@ interface ListItem {
   styles: Record<string, any>;
 }
 
+interface Model {
+  row: number;
+  column: number;
+  list: Array<ListItem>;
+}
+
 const defaultItemStyles = {
   borderWidth: 0,
   borderColor: "rgba(255, 255, 255, 0.5)",
   borderRadius: 0,
 };
 
-const model = defineModel<{
-  row: number;
-  column: number;
-  list: Array<ListItem>;
-}>();
+const model = defineModel<Model>();
 
 watch([() => model.value?.row, () => model.value?.column], () => {
   model.value!.list = [];

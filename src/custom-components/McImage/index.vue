@@ -4,24 +4,23 @@
 
 <script setup lang="ts">
 import { type MainProps } from "../type";
+import { getMainStyle } from "../utils";
 import { computed } from "vue";
 import baseImg from "./baseImg";
 const defaultImagePath = baseImg;
-const {styles} = defineProps<
-  MainProps & {
-    imageValue: {
-      imagePath?: string;
-      jumpPath?: string;
-    };
-  }
->();
+
+interface Props extends MainProps {
+  imageValue: {
+    imagePath?: string;
+    jumpPath?: string;
+  };
+}
+const { styles={} } = defineProps<Props>();
 
 const imageStyle = computed(() => {
-  if (!styles) return;
-  const { borderRadius, height } = styles;
+  const mainStyle = getMainStyle(styles);
   return {
-    borderRadius: `${borderRadius}px`,
-    height: `${height}px`,
+    ...mainStyle,
     width: "100%",
   };
 });
