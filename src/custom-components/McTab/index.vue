@@ -1,6 +1,6 @@
 <template>
-  <div class="McTab" :style="contentStyle">
-    <slot></slot>
+  <div class="McTab" :style="wrapStyle">
+    <div></div>
   </div>
 </template>
 
@@ -9,9 +9,18 @@ import { computed, StyleValue } from "vue";
 import { type MainProps } from "../type";
 import { getMainStyle, isNumber, getMarginStyle } from "../utils";
 
-const { styles = {} } = defineProps<MainProps>();
+const {
+  styles = {},
+  tabList,
+  attrs,
+} = defineProps<
+  MainProps & {
+    tabList: any;
+    attrs: any;
+  }
+>();
 
-const contentStyle = computed<StyleValue>(() => {
+const wrapStyle = computed<StyleValue>(() => {
   if (!styles) return {};
   const mainStyle = getMainStyle(styles);
   const { height = "auto" } = styles;
@@ -25,6 +34,6 @@ const contentStyle = computed<StyleValue>(() => {
 
 <style lang="scss" scoped>
 .McTab {
-  word-break: break-all;
+  display: flex;
 }
 </style>

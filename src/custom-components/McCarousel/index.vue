@@ -1,5 +1,5 @@
 <template>
-  <div class="McContainer" :style="contentStyle">
+  <div class="McContainer" :style="wrapStyle">
     <swiper-container v-bind="swiperAttrs">
       <swiper-slide v-for="item in list" :key="item.id">
         <img :src="item.imagePath" />
@@ -40,7 +40,7 @@ const swiperAttrs = computed(() => {
   };
 });
 
-const contentStyle = computed<StyleValue>(() => {
+const wrapStyle = computed<StyleValue>(() => {
   if (!styles) return {};
   const mainStyle = getMainStyle(styles);
   const { height = "auto" } = styles;

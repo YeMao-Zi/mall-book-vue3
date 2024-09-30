@@ -1,7 +1,5 @@
 <template>
-  <div class="McBlock" :style="contentStyle">
-    <slot></slot>
-  </div>
+  <div class="McBlock" :style="wrapStyle"></div>
 </template>
 
 <script setup lang="ts">
@@ -11,7 +9,7 @@ import { getMainStyle, isNumber, getMarginStyle } from "../utils";
 
 const { styles = {} } = defineProps<MainProps>();
 
-const contentStyle = computed<StyleValue>(() => {
+const wrapStyle = computed<StyleValue>(() => {
   if (!styles) return {};
   const mainStyle = getMainStyle(styles);
   const { height = "auto", backgroundImage } = styles;

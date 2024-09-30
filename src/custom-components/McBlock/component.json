@@ -1,7 +1,6 @@
 {
   "name": "占位",
   "icon": "fluent-mdl2:rectangle-shape",
-  "children": [],
   "fields": {
     "styles": {
       "label": "容器样式",
@@ -23,7 +22,7 @@
           "attr": {
             "max": 500
           },
-          "value": 150
+          "value": 20
         }
       }
     }

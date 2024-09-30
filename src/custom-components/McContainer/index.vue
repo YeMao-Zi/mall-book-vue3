@@ -1,5 +1,5 @@
 <template>
-  <div class="McContainer" :style="contentStyle">
+  <div class="McContainer" :style="wrapStyle">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@ import { getMainStyle, isNumber, getMarginStyle } from "../utils";
 
 const { styles = {} } = defineProps<MainProps>();
 
-const contentStyle = computed<StyleValue>(() => {
+const wrapStyle = computed<StyleValue>(() => {
   if (!styles) return {};
   const mainStyle = getMainStyle(styles);
   const {
@@ -36,5 +36,6 @@ const contentStyle = computed<StyleValue>(() => {
 <style lang="scss" scoped>
 .McContainer {
   word-break: break-all;
+  overflow: hidden;
 }
 </style>

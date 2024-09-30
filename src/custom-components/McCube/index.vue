@@ -7,7 +7,7 @@
  * @Description: 魔方组件
 -->
 <template>
-  <div class="McCube" ref="McCubeRef" :style="contentStyle">
+  <div class="McCube" ref="McCubeRef" :style="wrapStyle">
     <div
       class="cube-box"
       v-for="(item, index) in cube.list"
@@ -57,7 +57,7 @@ const { styles, cube } = defineProps<
   }
 >();
 
-const contentStyle = computed(() => {
+const wrapStyle = computed(() => {
   if (!styles) return;
   // console.log(cube, "cube");
   const column = cube.column;

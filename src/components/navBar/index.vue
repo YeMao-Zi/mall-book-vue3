@@ -8,7 +8,11 @@
 import { widgets } from "../control/config";
 import { pageCmp } from "../pageConfig/config";
 const save = () => {
-  console.log(widgets, "pageCmp", pageCmp);
+  const config = {
+    widgets: widgets.value,
+    page: pageCmp,
+  };
+  console.log(config);
 };
 </script>
 

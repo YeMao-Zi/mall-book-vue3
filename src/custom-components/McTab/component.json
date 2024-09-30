@@ -40,11 +40,81 @@
         }
       ]
     },
+    "attrs": {
+      "label": "导航栏设置",
+      "type": "object",
+      "child": {
+        "model": {
+          "label": "模式选择",
+          "type": "select",
+          "value": "fixed",
+          "data": [
+            {
+              "id": "001",
+              "label": "固定",
+              "value": "fixed"
+            },
+            {
+              "id": "002",
+              "label": "滑动",
+              "value": "scroll"
+            }
+          ]
+        },
+        "type": {
+          "label": "显示类型",
+          "type": "select",
+          "value": "image-text",
+          "data": [
+            {
+              "id": "001",
+              "label": "图片",
+              "value": "image"
+            },
+            {
+              "id": "002",
+              "label": "文字",
+              "value": "text"
+            },
+            {
+              "id": "003",
+              "label": "图文",
+              "value": "image-text"
+            }
+          ]
+        }
+      }
+    },
     "styles": {
       "label": "导航栏样式",
       "type": "object",
       "child": {
-        "titleColor": {
+        "paddingTop": {
+          "label": "上内间距",
+          "type": "number",
+          "value": 10
+        },
+        "paddingBottom": {
+          "label": "下内间距",
+          "type": "number",
+          "value": 10
+        },
+        "paddingLeft": {
+          "label": "左内间距",
+          "type": "number",
+          "value": 10
+        },
+        "paddingRight": {
+          "label": "右内间距",
+          "type": "number",
+          "value": 10
+        },
+        "gap": {
+          "label": "单项间隔",
+          "type": "number",
+          "value": 0
+        },
+        "color": {
           "label": "文本颜色",
           "type": "color",
           "value": "#fff"

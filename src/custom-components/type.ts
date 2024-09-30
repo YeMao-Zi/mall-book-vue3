@@ -1,5 +1,3 @@
-import { StyleValue } from "vue";
-
 export interface BoxPadding {
   paddingTop: number;
   paddingRight: number;
