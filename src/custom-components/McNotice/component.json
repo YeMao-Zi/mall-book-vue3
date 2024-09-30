@@ -1,0 +1,46 @@
+{
+  "name": "公告",
+  "icon": "icon-park-outline:volume-notice",
+  "fields": {
+    "imageValue": {
+      "label": "公告内容",
+      "type": "object",
+      "child": {
+        "text": {
+          "label": "公告文本",
+          "type": "string",
+          "value": "自恨罗衣掩诗句，举头空羡榜中名"
+        },
+        "icon": {
+          "label": "公告图标",
+          "type": "upload",
+          "value": ""
+        }
+      }
+    },
+    "styles": {
+      "label": "公告样式",
+      "type": "object",
+      "child": {
+        "borderRadius": {
+          "label": "圆角",
+          "type": "number",
+          "value": 0
+        },
+        "backgroundColor": {
+          "label": "背景色",
+          "type": "color",
+          "value": "rgba(255, 255, 255, 0)"
+        },
+        "height": {
+          "label": "高度",
+          "type": "number",
+          "attr": {
+            "max": 500
+          },
+          "value": 150
+        }
+      }
+    }
+  }
+}
