@@ -1,7 +1,11 @@
 <template>
   <div class="McContainer" :style="wrapStyle">
     <swiper-container v-bind="swiperAttrs">
-      <swiper-slide v-for="item in list" :key="item.id">
+      <swiper-slide
+        v-for="item in list"
+        :key="item.id"
+        @click="handleClick(item)"
+      >
         <img :src="item.imagePath" />
       </swiper-slide>
     </swiper-container>
@@ -9,18 +13,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed, StyleValue } from "vue";
-import { type MainProps } from "../type";
-import { getMainStyle } from "../utils";
+import { computed, StyleValue, inject } from "vue";
+import { type MainProps, ObjectExpand } from "../type";
+import { getMainStyle, jumplink } from "../utils";
+import { useOperabilityCall } from "../config";
 
+type ListItem = ObjectExpand<{
+  id: any;
+  imagePath?: string;
+  jumpPath?: string;
+}>;
 interface Props extends MainProps {
-  list: Array<{
-    id: any;
-    imagePath?: string;
-    jumpPath?: string;
-  }>;
+  list: Array<ListItem>;
 }
-
+const operability = inject("operability");
 const { attrs = {}, styles = {}, list = [] } = defineProps<Props>();
 
 const swiperAttrs = computed(() => {
@@ -43,9 +49,14 @@ const wrapStyle = computed<StyleValue>(() => {
     ...mainStyle,
   };
 });
+
+const handleClick = (item: ListItem) => {
+  if (!operability || !item.jumpPath) return;
+  jumplink(item.jumpPath);
+};
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .McContainer {
   overflow: hidden;
 }

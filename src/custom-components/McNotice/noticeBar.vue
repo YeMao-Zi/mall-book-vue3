@@ -1,62 +1,94 @@
 <template>
-  <div class="scroll" :style="{ width: width }">
-    <div class="bar-wrap" ref="barWrapRef">
-      <slot></slot>
-      <slot></slot>
+  <div ref="scrollRef" class="scroll" style="width: 0px">
+    <div class="box">
+      <div
+        class="content"
+        ref="contentRef"
+        :style="{
+          animationDuration: _duration + 's',
+          paddingLeft: `${_scrollRefWidth}px`,
+        }"
+        :class="{ aniBox: _scrollable }"
+      >
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
 
-<script setup type="ts">
-import { onMounted, ref } from "vue";
-  let isPause = ref(false)
-  let pos = ref(0) // 初始化位置
-  const barWrapRef = ref()
-  defineProps({
-    width: {
-      type: String,
-      default: '100%'
+<script lang="ts" setup>
+import { onMounted, ref, useTemplateRef } from "vue";
+import { type ObjectExpand } from "../type";
+
+type Props = ObjectExpand<{
+  speed?: number;
+  scrollable?: boolean;
+}>;
+
+const { speed = 100, scrollable = true } = defineProps<Props>();
+
+const _scrollable = ref(scrollable);
+const contentRef = useTemplateRef("contentRef");
+const scrollRef = useTemplateRef("scrollRef");
+
+const _duration = ref(0);
+const _scrollRefWidth = ref(0);
+
+onMounted(() => {
+  getWrapWidth();
+});
+
+function getWrapWidth() {
+  const scrollWidth = scrollRef.value?.offsetWidth || 0;
+  const width = contentRef.value?.offsetWidth || 0;
+  if (!scrollable) {
+    if (scrollWidth <= width) {
+      _scrollable.value = true;
+      _scrollRefWidth.value = scrollWidth;
+    } else {
+      return;
     }
-  })
-  onMounted(()=>{
-    startAnimation()
-  })
-  const startAnimation = ()=> {
-    const wrapWidth = barWrapRef.value.offsetWidth
-    // 使用requestAnimationFrame实现动画循环
-    function animate() {
-      if(!isPause.value) pos.value-=0.5
-      // 移动元素
-      barWrapRef.value.style.transform = 'translateX(' + pos.value + 'px)';
-      // 检查是否到达目标位置
-      if (Math.abs(pos.value) < Math.abs(wrapWidth/2)) {
-        requestAnimationFrame(animate); // 继续请求下一帧动画
-      }else{
-        pos.value = 0
-        requestAnimationFrame(animate); // 继续请求下一帧动画
-      }
-    }
-    // 首次调用动画函数
-    requestAnimationFrame(animate);
   }
-  const pause = ()=>{
-    isPause.value = true
-  }
-  const play = ()=>{
-    isPause.value = false
-  }
-  defineExpose({ pause , play})
+  _scrollRefWidth.value = scrollWidth;
+  console.log(scrollWidth, "scrollWidth", width);
+  let totalWidth = (width + scrollWidth) / speed;
+  _duration.value = Math.ceil(totalWidth);
+}
 </script>
 
 <style scoped>
 .scroll {
   width: 100%;
+  flex: 1;
   overflow: hidden;
 }
-.bar-wrap {
+
+.place {
+  flex: 1;
+  min-width: 0;
+}
+
+.content {
+  white-space: nowrap;
+}
+
+.box {
+  width: 100%;
+  white-space: nowrap;
   display: flex;
-  overflow: hidden;
-  width: max-content;
-  transition: all 0ms ease-in 0s;
+}
+
+.aniBox {
+  animation-name: roll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 </style>

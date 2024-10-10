@@ -1,12 +1,12 @@
 <template>
-  <config-item :label="label">
+  <config-item :label="label" :tip="tip">
     <a-switch v-model="model" />
   </config-item>
 </template>
 
 <script setup lang="ts">
 import ConfigItem from "@/components/ConfigItem.vue";
-defineProps<{ label: string }>();
+defineProps<{ label: string; tip?: string }>();
 
 const model = defineModel<boolean>();
 </script>

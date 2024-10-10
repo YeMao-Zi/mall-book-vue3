@@ -1,7 +1,11 @@
 <template>
   <div class="McTab" :style="wrapStyle">
     <div class="item" v-for="item in tabList" :key="item.id" :style="itemStyle">
-      <img v-if="attrs.type !== 'text'" :style="imageStyle" :src="item.imagePath" />
+      <img
+        v-if="attrs.type !== 'text'"
+        :style="imageStyle"
+        :src="item.imagePath"
+      />
       <span v-if="attrs.type !== 'image'" class="">{{ item.label }}</span>
     </div>
   </div>
@@ -9,15 +13,15 @@
 
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
-import { type MainProps } from "../type";
+import { type MainProps, ObjectExpand } from "../type";
 import { getMainStyle } from "../utils";
 
-interface TabItem {
+type TabItem = ObjectExpand<{
   id: string;
   label: string;
   imagePath: string;
   jumpPath: string;
-}
+}>;
 
 interface Props extends MainProps {
   tabList: Array<TabItem>;
@@ -50,7 +54,7 @@ const imageStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .McTab {
   display: flex;
   justify-content: space-between;

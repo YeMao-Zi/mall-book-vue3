@@ -15,6 +15,7 @@ declare module 'vue' {
     McImg: typeof import('./src/custom-components/McImg/index.vue')['default']
     NavBar: typeof import('./src/components/navBar/index.vue')['default']
     PageConfig: typeof import('./src/components/pageConfig/index.vue')['default']
+    PreviewModal: typeof import('./src/components/navBar/previewModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WidgetShape: typeof import('./src/components/control/WidgetShape.vue')['default']

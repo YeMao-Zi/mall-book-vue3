@@ -13,7 +13,7 @@ const { styles = {} } = defineProps<MainProps>();
 
 const wrapStyle = computed<StyleValue>(() => {
   const mainStyle = getMainStyle(styles);
-  const { height = "auto", backgroundImage } = styles;
+  const { backgroundImage } = styles;
   const background = backgroundImage
     ? {
         "background-image": `url(${backgroundImage})`,
@@ -27,7 +27,7 @@ const wrapStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .McContainer {
   word-break: break-all;
 }

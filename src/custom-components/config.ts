@@ -1,4 +1,4 @@
-import { reactive, defineAsyncComponent, type App } from "vue";
+import { reactive, defineAsyncComponent, inject, type App } from "vue";
 import type {
   Initial,
   Fields,
@@ -61,3 +61,10 @@ export function globalComponents(app: App<Element>) {
     app.component(result, defineAsyncComponent(modulesConent));
   }
 }
+
+export const useOperabilityCall: <T extends (...args: any[]) => void>(
+  fn: T,
+  ...args: Parameters<T>
+) => void = (fn, ...args) => {
+  fn(...args);
+};

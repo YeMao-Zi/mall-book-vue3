@@ -3,17 +3,17 @@
 </template>
 
 <script setup lang="ts">
-import { type MainProps } from "../type";
+import { type MainProps,ObjectExpand } from "../type";
 import { getMainStyle } from "../utils";
 import { computed } from "vue";
 import baseImg from "./baseImg";
 const defaultImagePath = baseImg;
 
 interface Props extends MainProps {
-  imageValue: {
+  imageValue: ObjectExpand<{
     imagePath?: string;
     jumpPath?: string;
-  };
+  }>;
 }
 const { styles={} } = defineProps<Props>();
 
@@ -26,4 +26,4 @@ const imageStyle = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

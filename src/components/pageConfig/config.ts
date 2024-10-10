@@ -3,7 +3,7 @@ import componetJson from "./component.json";
 import type { ComponentOptions, Field } from "@/types/control";
 import { initDefaulValue } from "@/custom-components/config";
 
-export const pageCmp = reactive<ComponentOptions>({
+export const page = reactive<ComponentOptions>({
   id: "pageconfig",
   ...initDefaulValue(componetJson as any),
 });

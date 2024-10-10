@@ -26,7 +26,7 @@ const wrapStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .McBlock {
   word-break: break-all;
 }

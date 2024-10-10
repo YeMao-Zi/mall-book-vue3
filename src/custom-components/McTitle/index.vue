@@ -9,15 +9,14 @@
 
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
-import { type MainProps } from "../type";
+import { type MainProps, ObjectExpand } from "../type";
 import { getMainStyle } from "../utils";
 
 interface Props extends MainProps {
-  value: {
+  value: ObjectExpand<{
     title: string;
     info: string;
-  };
-  attrs: any;
+  }>;
 }
 const { styles = {}, value } = defineProps<Props>();
 
@@ -45,7 +44,7 @@ const infoStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .McTitle {
   display: flex;
   align-items: center;

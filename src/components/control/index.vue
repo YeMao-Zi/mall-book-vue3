@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-25 17:47:19
+ * @LastEditTime: 2024-10-10 18:04:40
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -33,7 +33,7 @@
       <div class="w-full">
         <div class="w-[375px] my-[50px] mx-auto bg-white shadow-lg">
           <pageConfig
-            :styles="pageCmp.styles"
+            :styles="page.styles"
             @page-setting="handlePageSetting"
           >
             <ControlNestWidget v-model:list="widgets"></ControlNestWidget>
@@ -53,7 +53,7 @@
       />
       <customSchemaTemplate
         v-else
-        v-model="pageCmp"
+        v-model="page"
         :shema-field="pageShemaField"
       />
     </div>
@@ -74,7 +74,7 @@ import type {
 } from "@/types/control";
 import { ControlInject } from "@/types/control";
 import customSchemaTemplate from "@/custom-schema-template/index.vue";
-import { pageCmp, pageShemaField } from "../pageConfig/config";
+import { page, pageShemaField } from "../pageConfig/config";
 
 import { widgets } from "./config";
 

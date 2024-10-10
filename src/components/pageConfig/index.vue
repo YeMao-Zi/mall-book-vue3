@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
-import { computed } from "vue";
+import { computed, provide } from "vue";
 import { type MainProps } from "@/custom-components/type";
 
 const props = defineProps<MainProps>();
@@ -28,6 +28,8 @@ const pageStyles = computed(() => {
 const pageSetting = () => {
   emits("pageSetting");
 };
+
+provide("operability", false);
 </script>
 
 <style lang="scss" scoped>
