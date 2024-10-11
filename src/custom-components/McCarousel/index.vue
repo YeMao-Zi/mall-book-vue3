@@ -13,10 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, StyleValue, inject } from "vue";
-import { type MainProps, ObjectExpand } from "../type";
-import { getMainStyle, jumplink } from "../utils";
-import { useOperabilityCall } from "../config";
+import { computed, StyleValue } from "vue";
+import type { MainProps, ObjectExpand, onClick } from "../type";
+import { getMainStyle } from "../utils";
 
 type ListItem = ObjectExpand<{
   id: any;
@@ -25,9 +24,10 @@ type ListItem = ObjectExpand<{
 }>;
 interface Props extends MainProps {
   list: Array<ListItem>;
+  onClick?: onClick;
 }
-const operability = inject("operability");
-const { attrs = {}, styles = {}, list = [] } = defineProps<Props>();
+
+const { attrs = {}, styles = {}, list = [], onClick } = defineProps<Props>();
 
 const swiperAttrs = computed(() => {
   const { autoplay = true, loop } = attrs;
@@ -51,8 +51,7 @@ const wrapStyle = computed<StyleValue>(() => {
 });
 
 const handleClick = (item: ListItem) => {
-  if (!operability || !item.jumpPath) return;
-  jumplink(item.jumpPath);
+  onClick && onClick({ item, type: "carousel" });
 };
 </script>
 

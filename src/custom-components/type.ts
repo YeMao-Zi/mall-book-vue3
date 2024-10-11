@@ -28,7 +28,6 @@ export type ObjectExpand<T> = T & {
   [k: string]: any;
 };
 
-
 import type { InjectionKey, Ref } from "vue";
 
 export type Schema = {
@@ -77,3 +76,5 @@ export const ControlInject = Symbol() as InjectionKey<{
   setCurComponent: SetCurComponent;
   deleteComponent: DeleteComponent;
 }>;
+
+export type onClick = (options: { item: any; type: string }) => void;

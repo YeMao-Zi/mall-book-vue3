@@ -10,6 +10,14 @@ const routes: RouteRecordRaw[] = [
     },
   },
   {
+    path: "/preview",
+    name: "preview",
+    component: () => import("@/pages/preview/index.vue"),
+    meta: {
+      title: "预览",
+    },
+  },
+  {
     // 不识别的路由自动跳首页
     path: "/:catchAll(.*)",
     redirect: "/",

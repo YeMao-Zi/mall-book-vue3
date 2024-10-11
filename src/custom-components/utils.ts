@@ -20,12 +20,3 @@ export const getMainStyle = (props: Record<string, any>): CSSProperties => {
 export const isNumber = (value: any) => {
   return !isNaN(parseFloat(value)) && isFinite(value);
 };
-
-export const jumplink = (link: string) => {
-  const { origin, pathname } = location;
-  if (link.startsWith("http")) {
-    location.href = link;
-  } else {
-    location.href = origin + pathname + link;
-  }
-};

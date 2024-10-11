@@ -21,12 +21,12 @@
         {
           "id": "0001",
           "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png",
-          "jumpPath": "https://www.baidu.com"
+          "jumpPath": "https://www.baidu.com/"
         },
         {
           "id": "0002",
           "imagePath": "https://sponsors.vuejs.org/images/chrome_frameworks_fund.png",
-          "jumpPath": "https://www.baidu.com"
+          "jumpPath": "https://cn.bing.com/"
         }
       ]
     },

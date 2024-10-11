@@ -6,7 +6,12 @@
         <div class="viewBox">
           <div class="safeTop"></div>
           <div class="phoneContent">
-            <customComponent :page="page" :widgets="widgets" />
+            <iframe
+              style="width: 100%; height: 100%"
+              ref="iframeRef"
+              src="/#/preview"
+              @load="iframeLoad"
+            />
           </div>
           <div class="safeBottom"></div>
         </div>
@@ -21,18 +26,29 @@
 </template>
 
 <script setup lang="ts">
-import { provide } from "vue";
-import customComponent from "@/custom-components/index.vue";
 import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
+import { deepClone } from "@/utils/index";
+import { onMounted, useTemplateRef, toRaw } from "vue";
 
+const iframeRef = useTemplateRef("iframeRef");
 const visible = defineModel<boolean>();
+
+const iframeLoad = () => {
+  const info = {
+    page: toRaw(page),
+    widgets: toRaw(widgets.value),
+  };
+  setTimeout(() => {
+    iframeRef.value!.contentWindow?.postMessage(deepClone(info), "*");
+  }, 200);
+};
 
 const handleConfirm = () => {
   console.log(page, "page", widgets);
 };
 
-provide("operability", false);
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
@@ -68,9 +84,11 @@ provide("operability", false);
 
 .preview-modal-wrap {
   position: relative;
-  padding: 10px;
+  padding: 5px;
   border-radius: 25px;
   background-color: #fff;
+  overflow: hidden;
+  box-shadow: 2px 2px 24px #bebbbb;
 }
 
 .viewBox {
