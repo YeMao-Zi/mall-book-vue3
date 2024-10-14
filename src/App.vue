@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
+import customPlatform from "./custom-platform";
 
 /* 设置 rem 函数 */
 function setRem() {
@@ -22,7 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <router-view />
+  <customPlatform />
 </template>
 
 <style scoped></style>
