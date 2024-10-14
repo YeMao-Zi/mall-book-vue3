@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import ConfigItem from "@/components/ConfigItem.vue";
+import ConfigItem from "@/custom-platform/ConfigItem.vue";
 import { computed, ref, watch } from "vue";
 defineProps<{ label: string }>();
 

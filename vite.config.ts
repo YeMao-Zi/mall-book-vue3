@@ -26,7 +26,7 @@ export default defineConfig({
     }),
     Components({
       dirs: [
-        "src/components",
+        "src/custom-platform",
         "src/custom-components/**/index.vue",
         "src/custom-schema-template/**/index.vue",
       ],
@@ -52,6 +52,11 @@ export default defineConfig({
         }),
         tailwindcss,
       ],
+    },
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
     },
   },
 });

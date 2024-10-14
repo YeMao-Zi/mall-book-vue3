@@ -5,6 +5,7 @@ import type {
   InitializingItem,
   Schema,
 } from "@/types/control";
+import { register } from "swiper/element/bundle";
 
 // 获取所有自定义组件schema
 export function useSchema() {
@@ -52,7 +53,8 @@ export function setDefaultValue(
 }
 
 // 注册组件
-export function globalComponents(app: App<Element>) {
+export function initCustomComponents(app: App<Element>) {
+  register();
   const requireModules = import.meta.glob("@/custom-components/**/index.vue");
   for (const path in requireModules) {
     const [, name] = path.split("/custom-components/");

@@ -6,11 +6,16 @@
         <div class="viewBox">
           <div class="safeTop"></div>
           <div class="phoneContent">
-            <iframe
+            <!-- <iframe
               style="width: 100%; height: 100%"
               ref="iframeRef"
               src="/#/preview"
               @load="iframeLoad"
+            /> -->
+            <customComponent
+              :page="page"
+              :widgets="widgets"
+              :onClick="onClick"
             />
           </div>
           <div class="safeBottom"></div>
@@ -26,28 +31,42 @@
 </template>
 
 <script setup lang="ts">
+import customComponent from "@/custom-components/index";
 import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
 import { deepClone } from "@/utils/index";
 import { onMounted, useTemplateRef, toRaw } from "vue";
 
-const iframeRef = useTemplateRef("iframeRef");
+// const iframeRef = useTemplateRef("iframeRef");
 const visible = defineModel<boolean>();
 
-const iframeLoad = () => {
-  const info = {
-    page: toRaw(page),
-    widgets: toRaw(widgets.value),
-  };
-  setTimeout(() => {
-    iframeRef.value!.contentWindow?.postMessage(deepClone(info), "*");
-  }, 200);
-};
+const {} = defineProps();
+
+// const iframeLoad = () => {
+//   const info = {
+//     page: toRaw(page),
+//     widgets: toRaw(widgets.value),
+//   };
+//   setTimeout(() => {
+//     iframeRef.value!.contentWindow?.postMessage(deepClone(info), "*");
+//   }, 200);
+// };
 
 const handleConfirm = () => {
   console.log(page, "page", widgets);
 };
-
+const onClick = (options: any) => {
+  console.log(options, "options");
+  //   const { item = {}, type } = options;
+  //   const { jumpPath } = item;
+  //   if (!jumpPath) return;
+  //   if (jumpPath.startsWith("http")) {
+  //     location.href = jumpPath;
+  //   } else {
+  //     location.href =
+  //       location.origin + location.pathname + location.hash.slice(0, -1); + jumpPath;
+  //   }
+};
 onMounted(() => {});
 </script>
 

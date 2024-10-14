@@ -2,7 +2,7 @@ import { defineAsyncComponent, type App } from "vue";
 import customSchemaTemplate from "./index.vue";
 
 // 注册组件
-export function globalComponents(app: App<Element>) {
+export function initCustomSchemaTemplate(app: App<Element>) {
   const requireModules = import.meta.glob(
     "@/custom-schema-template/**/index.vue",
   );
