@@ -1,0 +1,70 @@
+<template>
+  <div class="McTab" :style="wrapStyle">
+    <div class="item" v-for="item in tabList" :key="item.id" :style="itemStyle">
+      <img
+        v-if="attrs.type !== 'text'"
+        :style="imageStyle"
+        :src="item.imagePath"
+      />
+      <span v-if="attrs.type !== 'image'" class="">{{ item.label }}</span>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed, StyleValue } from "vue";
+import { type MainProps, ObjectExpand } from "../type";
+import { getMainStyle } from "../utils";
+
+type TabItem = ObjectExpand<{
+  id: string;
+  label: string;
+  imagePath: string;
+  jumpPath: string;
+}>;
+
+interface Props extends MainProps {
+  tabList: Array<TabItem>;
+  attrs: any;
+}
+
+const { styles = {}, tabList, attrs } = defineProps<Props>();
+
+const wrapStyle = computed<StyleValue>(() => {
+  const mainStyle = getMainStyle(styles);
+  return {
+    ...mainStyle,
+  };
+});
+
+const itemStyle = computed<StyleValue>(() => {
+  const { itemGap } = attrs;
+  return {
+    gap: `${itemGap}px`,
+  };
+});
+
+const imageStyle = computed<StyleValue>(() => {
+  const { imageWidth, imageHeight, imageRadius } = attrs;
+  return {
+    width: `${imageWidth}px`,
+    height: `${imageHeight}px`,
+    borderRadius: `${imageRadius}px`,
+  };
+});
+</script>
+
+<style scoped>
+.McTab {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 auto;
+}
+</style>
