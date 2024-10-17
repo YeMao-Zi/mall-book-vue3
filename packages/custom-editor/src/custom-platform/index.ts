@@ -1,5 +1,5 @@
 import customPlatform from "./index.vue";
-import { initCustomComponents } from "../custom-components";
+import { initCustomComponents } from "@mobilecustom/components";
 import { initCustomSchemaTemplate } from "../custom-schema-template";
 import type { App } from "vue";
 

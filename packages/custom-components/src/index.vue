@@ -19,7 +19,7 @@ interface Props {
   page: ComponentOptions;
   onClick?: onClick;
 }
-const { page, widgets } = defineProps<Props>();
+const { page, widgets, onClick } = defineProps<any>();
 </script>
 
 <style>

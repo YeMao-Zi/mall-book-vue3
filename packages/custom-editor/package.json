@@ -8,12 +8,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "swiper": "^11.1.12",
     "vue": "^3.5.1",
     "vue-draggable-plus": "^0.5.3"
   },
   "license": "MIT",
   "devDependencies": {
+    "@mobilecustom/components": "^1.0.0",
     "@arco-design/web-vue": "^2.56.2",
     "@arco-plugins/vite-vue": "^1.4.5",
     "@iconify/vue": "^4.1.2",

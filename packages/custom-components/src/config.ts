@@ -1,10 +1,5 @@
 import { reactive, defineAsyncComponent, inject, type App } from "vue";
-import type {
-  Initial,
-  Fields,
-  InitializingItem,
-  Schema,
-} from "@/types/control";
+import type { Initial, Fields, InitializingItem, Schema } from "./type";
 import { register } from "swiper/element/bundle";
 
 // 获取所有自定义组件schema
@@ -55,9 +50,9 @@ export function setDefaultValue(
 // 注册组件
 export function initCustomComponents(app: App<Element>) {
   register();
-  const requireModules = import.meta.glob("@/custom-components/**/index.vue");
+  const requireModules = import.meta.glob("../src/**/index.vue");
   for (const path in requireModules) {
-    const [, name] = path.split("/custom-components/");
+    const [, name] = path.split("./");
     const result = name.replace("/index.vue", "");
     const modulesConent: any = requireModules[path];
     app.component(result, defineAsyncComponent(modulesConent));

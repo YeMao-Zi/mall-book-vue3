@@ -9,10 +9,10 @@ importers:
   .:
     devDependencies:
       '@mobilecustom/components':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:packages/custom-components
       '@mobilecustom/editor':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:packages/custom-editor
 
   packages/custom-components:
@@ -63,9 +63,6 @@ importers:
 
   packages/custom-editor:
     dependencies:
-      swiper:
-        specifier: ^11.1.12
-        version: 11.1.14
       vue:
         specifier: ^3.5.1
         version: 3.5.12(typescript@5.6.3)
@@ -82,6 +79,9 @@ importers:
       '@iconify/vue':
         specifier: ^4.1.2
         version: 4.1.2(vue@3.5.12(typescript@5.6.3))
+      '@mobilecustom/components':
+        specifier: ^1.0.0
+        version: link:../custom-components
       '@types/node':
         specifier: ^22.5.4
         version: 22.7.5

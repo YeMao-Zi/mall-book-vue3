@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-10-14 15:07:52
+ * @LastEditTime: 2024-10-17 17:09:03
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -60,7 +60,7 @@
 <script setup lang="ts">
 import { VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
-import { useSchema } from "@/custom-components/config";
+import { useSchema } from "@mobilecustom/components";
 import { ref, provide, computed } from "vue";
 import { deepClone, randomString } from "@/utils/index";
 import type {

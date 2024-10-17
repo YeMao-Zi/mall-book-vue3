@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { computed } from "vue";
-import { type MainProps } from "@/custom-components/type";
+import { type MainProps } from "@mobilecustom/components";
 
 const props = defineProps<MainProps>();
 const emits = defineEmits(["pageSetting"]);

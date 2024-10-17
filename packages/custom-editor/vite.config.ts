@@ -3,7 +3,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from "node:url";
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 import postCssPxToRem from "postcss-pxtorem";
@@ -26,11 +26,7 @@ export default defineConfig({
       resolvers: [ArcoResolver()],
     }),
     Components({
-      dirs: [
-        "src/custom-platform",
-        "src/custom-components/**/index.vue",
-        "src/custom-schema-template/**/index.vue",
-      ],
+      dirs: ["src/custom-platform", "src/custom-schema-template/**/index.vue"],
       resolvers: [
         ArcoResolver({
           sideEffect: true,
@@ -41,7 +37,7 @@ export default defineConfig({
   server: { host: "0.0.0.0" },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
   css: {

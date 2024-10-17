@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev":"pnpm --filter @mobilecustom/editor dev"
+    "dev": "pnpm --filter @mobilecustom/editor dev"
   },
   "devDependencies": {
-    "@mobilecustom/editor": "workspace:*",
-    "@mobilecustom/components":"workspace:*"
+    "@mobilecustom/editor": "workspace:^",
+    "@mobilecustom/components": "workspace:^"
   }
 }

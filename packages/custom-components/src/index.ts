@@ -1,7 +1,7 @@
 import customComponents from "./index.vue";
-import { initCustomComponents } from "./config";
-
+export * from './type'
+import { initCustomComponents, initDefaulValue, useSchema } from "./config";
 
 export default customComponents;
 
-export { initCustomComponents };
+export { initCustomComponents, initDefaulValue, useSchema };

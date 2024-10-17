@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import customComponent from "@/custom-components/index";
+import customComponent from "@mobilecustom/components";
 import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
 import { deepClone } from "@/utils/index";
