@@ -11,13 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import type { ComponentOptions, onClick } from "../type";
-
-interface Props {
-  widgets: ComponentOptions[];
-  onClick?: onClick;
-}
-const { widgets } = defineProps<Props>();
+import type { PreviewProps } from "./type";
+defineOptions({
+  name: "Preview",
+});
+const { widgets } = defineProps<PreviewProps>();
 </script>
 
 <style></style>

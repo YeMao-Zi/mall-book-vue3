@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { computed } from "vue";
-import { type MainProps } from "@mobilecustom/components";
+import type { MainProps } from "@mobilecustom/components";
 
 const props = defineProps<MainProps>();
 const emits = defineEmits(["pageSetting"]);
@@ -28,7 +28,6 @@ const pageStyles = computed(() => {
 const pageSetting = () => {
   emits("pageSetting");
 };
-
 </script>
 
 <style lang="scss" scoped>

@@ -4,10 +4,14 @@
 
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
-import { type MainProps } from "../type";
+import type { McBlockProps } from "./type";
 import { getMainStyle } from "../utils";
 
-const { styles = {} } = defineProps<MainProps>();
+defineOptions({
+  name: "McBlock",
+});
+
+const { styles = {} } = defineProps<McBlockProps>();
 
 const wrapStyle = computed<StyleValue>(() => {
   const mainStyle = getMainStyle(styles);
@@ -26,8 +30,4 @@ const wrapStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style scoped>
-.McBlock {
-  word-break: break-all;
-}
-</style>
+<style scoped></style>

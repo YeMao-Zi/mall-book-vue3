@@ -14,27 +14,18 @@
 
 <script setup lang="ts">
 import { computed, StyleValue, ref, watch } from "vue";
-import { type MainProps, ObjectExpand } from "../type";
+import type { McNoticeProps } from "./type";
 import { getMainStyle } from "../utils";
 import noticeBar from "./noticeBar.vue";
-
+defineOptions({
+  name: "McNotice",
+});
 const randomString = () => Math.random().toString(36).slice(2);
-
-interface Props extends MainProps {
-  imageValue: ObjectExpand<{
-    text: string;
-    icon: string;
-  }>;
-  attrs: ObjectExpand<{
-    speed: number;
-    scrollable: boolean;
-  }>;
-}
 
 // 为了当配置变更时实时更改公告栏
 const noticeBarKey = ref(randomString());
 
-const props = defineProps<Props>();
+const props = defineProps<McNoticeProps>();
 
 watch(
   () => props,
@@ -65,10 +56,4 @@ const icoStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style scoped>
-.McNotice {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-</style>
+<style scoped></style>

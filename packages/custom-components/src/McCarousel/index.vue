@@ -13,21 +13,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, StyleValue } from "vue";
-import type { MainProps, ObjectExpand, onClick } from "../type";
+import { computed, onMounted, StyleValue } from "vue";
+import type { McCarouselListItem, McCarouselProps } from "./type";
 import { getMainStyle } from "../utils";
 
-type ListItem = ObjectExpand<{
-  id: any;
-  imagePath?: string;
-  jumpPath?: string;
-}>;
-interface Props extends MainProps {
-  list: Array<ListItem>;
-  onClick?: onClick;
-}
-
-const { attrs = {}, styles = {}, list = [], onClick } = defineProps<Props>();
+defineOptions({
+  name: "McCarousel",
+});
+const {
+  attrs = {},
+  styles = {},
+  list = [],
+  onClick,
+} = defineProps<McCarouselProps>();
 
 const swiperAttrs = computed(() => {
   const { autoplay = true, loop } = attrs;
@@ -50,34 +48,11 @@ const wrapStyle = computed<StyleValue>(() => {
   };
 });
 
-const handleClick = (item: ListItem) => {
+const handleClick = (item: McCarouselListItem) => {
   onClick && onClick({ item, type: "carousel" });
 };
+
+onMounted(() => {});
 </script>
 
-<style scoped>
-.McContainer {
-  overflow: hidden;
-}
-
-swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
+<style scoped></style>

@@ -1,6 +1,6 @@
 import { reactive, defineAsyncComponent, inject, type App } from "vue";
 import type { Initial, Fields, InitializingItem, Schema } from "./type";
-import { register } from "swiper/element/bundle";
+// import { register } from "swiper/element/bundle";
 
 // 获取所有自定义组件schema
 export function useSchema() {
@@ -8,7 +8,7 @@ export function useSchema() {
     fields: {}, // 字段配置项
     initializing: [], // 提取字段组成组件属性
   });
-  const files = import.meta.glob("./Mc*/component.json", { eager: true });
+  const files = import.meta.glob("./Mc*/component.js", { eager: true });
   Object.keys(files).forEach((key) => {
     const [, name] = key.split("/");
     const module = files[key] as any;
@@ -16,7 +16,6 @@ export function useSchema() {
     initial.fields[name] = config.fields;
     initial.initializing.push(initDefaulValue(config));
   });
-  console.log(initial, "initial");
   return initial;
 }
 
@@ -49,7 +48,7 @@ export function setDefaultValue(
 
 // 注册组件
 export function initCustomComponents(app: App<Element>) {
-  register();
+  // register();
   const requireModules = import.meta.glob("../src/**/index.vue");
   for (const path in requireModules) {
     const [, name] = path.split("./");

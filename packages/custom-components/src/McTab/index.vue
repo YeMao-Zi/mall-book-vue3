@@ -13,22 +13,12 @@
 
 <script setup lang="ts">
 import { computed, StyleValue } from "vue";
-import { type MainProps, ObjectExpand } from "../type";
+import type { McTabProps } from "./type";
 import { getMainStyle } from "../utils";
-
-type TabItem = ObjectExpand<{
-  id: string;
-  label: string;
-  imagePath: string;
-  jumpPath: string;
-}>;
-
-interface Props extends MainProps {
-  tabList: Array<TabItem>;
-  attrs: any;
-}
-
-const { styles = {}, tabList, attrs } = defineProps<Props>();
+defineOptions({
+  name: "McTab",
+});
+const { styles = {}, tabList, attrs } = defineProps<McTabProps>();
 
 const wrapStyle = computed<StyleValue>(() => {
   const mainStyle = getMainStyle(styles);
@@ -54,17 +44,4 @@ const imageStyle = computed<StyleValue>(() => {
 });
 </script>
 
-<style scoped>
-.McTab {
-  display: flex;
-  justify-content: space-between;
-  overflow-x: auto;
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 0 auto;
-}
-</style>
+<style scoped></style>

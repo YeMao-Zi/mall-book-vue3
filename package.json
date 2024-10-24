@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @mobilecustom/editor dev"
+    "dev": "pnpm --filter @mobilecustom/editor dev",
+    "build:comp": "pnpm --filter @mobilecustom/components build"
   },
   "devDependencies": {
     "@mobilecustom/editor": "workspace:^",

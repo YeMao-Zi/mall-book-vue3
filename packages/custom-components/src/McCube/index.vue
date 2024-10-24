@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-10-10 14:58:50
+ * @LastEditTime: 2024-10-24 14:26:30
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
@@ -27,35 +27,17 @@
 </template>
 
 <script setup lang="ts">
-import { type MainProps, ObjectExpand } from "../type";
 import { computed, onMounted, onUpdated, ref, useTemplateRef } from "vue";
 import { getMainStyle } from "../utils";
-
-type ListItem = ObjectExpand<{
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-  startKey: number;
-  endKey: number;
-  imagePath?: string;
-  jumpPath?: string;
-  styles: Record<string, any>;
-}>;
-
-interface Props extends MainProps {
-  cube: {
-    row: number;
-    column: number;
-    list: Array<ListItem>;
-  };
-}
-
+import type { McCubeListItem, McCubeProps } from "./type";
+defineOptions({
+  name: "McCube",
+});
 const McCubeRef = useTemplateRef("McCubeRef");
 
 const contentWidth = ref<number>(375);
 
-const { styles = {}, cube } = defineProps<Props>();
+const { styles = {}, cube } = defineProps<McCubeProps>();
 
 const wrapStyle = computed(() => {
   // console.log(cube, "cube");
@@ -69,7 +51,7 @@ const wrapStyle = computed(() => {
   };
 });
 
-const getBoxStyle = (item: ListItem) => {
+const getBoxStyle = (item: McCubeListItem) => {
   const column = cube.column;
   const row = cube.column;
   const width = (contentWidth.value / column) * item.width;
@@ -83,7 +65,7 @@ const getBoxStyle = (item: ListItem) => {
   };
 };
 
-const getItemStyle = (item: ListItem) => {
+const getItemStyle = (item: McCubeListItem) => {
   return {
     ...getMainStyle(item.styles),
   };
@@ -105,33 +87,4 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-.McCube {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.cube-box {
-  position: absolute;
-  border: initial;
-}
-
-.cube-item {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.cube-item-img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.empty {
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-theme-light);
-}
-</style>
+<style scoped></style>

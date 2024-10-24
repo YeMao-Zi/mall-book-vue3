@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import customComponent from "@mobilecustom/components";
+import { customComponent } from "@mobilecustom/components";
 import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
 import { deepClone } from "@/utils/index";
@@ -122,7 +122,7 @@ onMounted(() => {});
   .safeTop {
     width: 100%;
     height: 10px;
-    background-color: #fff;
+    background-color: #000;
   }
 
   .phoneContent {
@@ -134,7 +134,7 @@ onMounted(() => {});
   .safeBottom {
     width: 100%;
     height: 10px;
-    background-color: #fff;
+    background-color: #000;
   }
 }
 </style>

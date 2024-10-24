@@ -1,23 +1,3 @@
-export interface BoxPadding {
-  paddingTop: number;
-  paddingRight: number;
-  paddingLeft: number;
-  paddingBottom: number;
-}
-
-export interface BoxMargin {
-  marginTop: number;
-  marginRight: number;
-  marginLeft: number;
-  marginBottom: number;
-}
-
-export interface BoxBorder {
-  borderWidth: number;
-  borderColor: string;
-  borderRadius: number;
-}
-
 export interface MainProps {
   styles?: Record<string, any>;
   children?: any;
@@ -27,8 +7,6 @@ export interface MainProps {
 export type ObjectExpand<T> = T & {
   [k: string]: any;
 };
-
-import type { InjectionKey, Ref } from "vue";
 
 export type Schema = {
   name: string;
@@ -69,12 +47,4 @@ export interface Initial {
   initializing: InitializingItem[];
 }
 
-export const ControlInject = Symbol() as InjectionKey<{
-  initial: Initial;
-  widgets: Ref<ComponentOptions[]>;
-  curComponent: Ref<ComponentOptions | undefined>;
-  setCurComponent: SetCurComponent;
-  deleteComponent: DeleteComponent;
-}>;
-
-export type onClick = (options: { item: any; type: string }) => void;
+export type EventClick = (options: { item: any; type: string }) => void;
