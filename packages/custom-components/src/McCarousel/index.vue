@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, StyleValue } from "vue";
+import { computed, StyleValue } from "vue";
 import type { McCarouselListItem, McCarouselProps } from "./type";
 import { getMainStyle } from "../utils";
 
@@ -51,8 +51,6 @@ const wrapStyle = computed<StyleValue>(() => {
 const handleClick = (item: McCarouselListItem) => {
   onClick && onClick({ item, type: "carousel" });
 };
-
-onMounted(() => {});
 </script>
 
 <style scoped></style>

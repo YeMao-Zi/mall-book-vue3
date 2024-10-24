@@ -1,8 +1,8 @@
-@import "./McBlock/styles/index.scss";
-@import "./McCarousel/styles/index.scss";
-@import "./McContainer/styles/index.scss";
-@import "./McCube/styles/index.scss";
-@import "./McImage/styles/index.scss";
-@import "./McNotice/styles/index.scss";
-@import "./McTitle/styles/index.scss";
-@import "./customComponent/styles/index.scss";
+@use "./customComponent/styles/index" as *;
+@use "./McBlock/styles/index" as *;
+@use "./McCarousel/styles/index" as *;
+@use "./McContainer/styles/index" as *;
+@use "./McCube/styles/index" as *;
+@use "./McImage/styles/index" as *;
+@use "./McNotice/styles/index" as *;
+@use "./McTitle/styles/index" as *;

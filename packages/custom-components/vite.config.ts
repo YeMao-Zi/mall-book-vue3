@@ -47,7 +47,13 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes("swiper"),
+        },
+      },
+    }),
     dts({
       // 输出目录
       outDir: ["types"],
