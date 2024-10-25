@@ -6,8 +6,7 @@
   "module": "es",
   "typings": "types/index.d.ts",
   "scripts": {
-    "build": "gulp -f build/gulpfile.js",
-    "publishing": "release-it"
+    "build": "gulp -f build/gulpfile.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +22,9 @@
   },
   "devDependencies": {
     "vue": "^3.5.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
