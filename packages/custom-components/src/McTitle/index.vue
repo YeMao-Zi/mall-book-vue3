@@ -3,7 +3,7 @@
     <!-- 主标题 -->
     <div :style="titleStyle">{{ value.title }}</div>
     <!-- 副标题 -->
-    <div :style="infoStyle">{{ value.info }}</div>
+    <div v-if="value.info" :style="infoStyle">{{ value.info }}</div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import { getMainStyle } from "../utils";
 defineOptions({
   name: "McTitle",
 });
-const { styles = {}, value } = defineProps<McTitleProps>();
+const { styles = {}, value = {title:'大标题'} } = defineProps<McTitleProps>();
 
 const wrapStyle = computed<StyleValue>(() => {
   const mainStyle = getMainStyle(styles);

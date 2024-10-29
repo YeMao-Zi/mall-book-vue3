@@ -3,7 +3,7 @@ import McTitle from "./index.vue";
 export interface McTitleProps extends MainProps {
   value: ObjectExpand<{
     title: string;
-    info: string;
+    info?: string;
   }>;
 }
 

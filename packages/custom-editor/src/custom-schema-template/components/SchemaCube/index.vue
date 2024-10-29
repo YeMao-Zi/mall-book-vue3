@@ -23,14 +23,14 @@
     </div>
     <div class="cube">
       <!-- 布局容器 -->
-      <ul
-        class="cube-bar"
+      <div
+        class="cube_bar"
         v-for="(row, rowIndex) in groupNumbers"
         :key="rowIndex"
       >
-        <li
-          class="cube-box"
-          :class="{ 'cube-box-move': editKeys.includes(num) }"
+        <div
+          class="cube_box"
+          :class="{ 'cube_box_move': editKeys.includes(num) }"
           v-for="(num, columnIndex) in row"
           :key="num"
           :data-k="num"
@@ -40,18 +40,18 @@
           @mouseover.self="handleMove"
         >
           <icon-plus class="ico" />
-        </li>
-      </ul>
+        </div>
+      </div>
       <!-- 编辑容器块 -->
       <div
         v-for="(item, index) in model?.list"
         :style="getStyle(item)"
-        class="edited-bar"
-        :class="{ 'edited-bar-active': curItem?.startKey === item.startKey }"
+        class="edited_bar"
+        :class="{ 'edited_bar_active': curItem?.startKey === item.startKey }"
         :key="index"
         @click="handleItemClick(item)"
       >
-        <div class="ico-close" @click="handleDeleteItem(index)">
+        <div class="ico_close" @click="handleDeleteItem(index)">
           <icon-close-circle-fill />
         </div>
         <div>{{ item.imagePath ? "编辑" : "空" }}</div>
@@ -290,13 +290,14 @@ const handleDeleteItem = (index: number) => {
   position: relative;
   border-bottom: 1px solid var(--border-base);
   border-right: 1px solid var(--border-base);
-  &-bar {
-    display: flex;
-    width: 100%;
-  }
 }
 
-.cube-box {
+.cube_bar {
+  display: flex;
+  width: 100%;
+}
+
+.cube_box {
   flex: 1;
   aspect-ratio: 1;
   display: flex;
@@ -312,14 +313,14 @@ const handleDeleteItem = (index: number) => {
   }
 }
 
-.cube-box-move {
+.cube_box_move {
   background: var(--color-theme-light);
   .ico {
     display: none;
   }
 }
 
-.edited-bar {
+.edited_bar {
   position: absolute;
   background-color: #fff;
   box-sizing: border-box;
@@ -335,7 +336,7 @@ const handleDeleteItem = (index: number) => {
   align-items: center;
   color: var(--color-grey);
 
-  .ico-close {
+  .ico_close {
     display: none;
     position: absolute;
     top: -8px;
@@ -348,13 +349,13 @@ const handleDeleteItem = (index: number) => {
   }
 }
 
-.edited-bar-active {
+.edited_bar_active {
   box-sizing: border-box;
   background-color: var(--color-theme-light);
   border: 1px solid var(--color-theme);
   z-index: 5;
   &:hover {
-    .ico-close {
+    .ico_close {
       display: block;
     }
   }
