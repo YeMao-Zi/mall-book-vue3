@@ -15,7 +15,7 @@
   "files": [
     "es",
     "lib",
-    "global.d.ts"
+    "types"
   ],
   "dependencies": {
     "swiper": "^11.1.12"
