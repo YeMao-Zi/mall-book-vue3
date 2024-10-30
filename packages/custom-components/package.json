@@ -6,8 +6,7 @@
   "module": "src/index.ts",
   "typings": "types/index.d.ts",
   "scripts": {
-    "build": "gulp -f build/gulpfile.js",
-    "publish": "publish"
+    "build": "gulp -f build/gulpfile.js"
   },
   "repository": {
     "type": "git",
