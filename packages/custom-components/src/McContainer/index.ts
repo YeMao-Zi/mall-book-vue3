@@ -4,5 +4,4 @@ import _McContainer from "./index.vue";
 export const McContainer = withInstall(_McContainer);
 export default McContainer;
 
-export * from "./index.vue";
 export * from "./type";

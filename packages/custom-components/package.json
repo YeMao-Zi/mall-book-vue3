@@ -3,14 +3,14 @@
   "version": "1.1.0",
   "type": "module",
   "main": "lib",
-  "module": "src/index.ts",
+  "module": "es",
   "typings": "types/index.d.ts",
   "scripts": {
     "build": "gulp -f build/gulpfile.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YeMao-Zi/ym-useRequest"
+    "url": "https://github.com/YeMao-Zi/mall-book-vue3"
   },
   "files": [
     "es",

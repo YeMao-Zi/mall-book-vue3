@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import ConfigItem from "@/custom-platform/ConfigItem.vue";
-
 interface Props {
   label: string;
   attr?: any;

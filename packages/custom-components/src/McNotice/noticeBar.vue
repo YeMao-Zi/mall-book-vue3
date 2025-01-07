@@ -1,14 +1,14 @@
 <template>
-  <div ref="scrollRef" class="scroll" style="width: 0px">
-    <div class="box">
+  <div ref="scrollRef" class="mc-noticebar-scroll" style="width: 0px">
+    <div class="mc-noticebar-box">
       <div
-        class="content"
+        class="mc-noticebar-content"
         ref="contentRef"
         :style="{
           animationDuration: _duration + 's',
           paddingLeft: `${_scrollRefWidth}px`,
         }"
-        :class="{ aniBox: _scrollable }"
+        :class="{ 'mc-noticebar-aniBox': _scrollable }"
       >
         <slot></slot>
       </div>
@@ -50,4 +50,6 @@ function getWrapWidth() {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+// @use "./styles/noticeBar.scss"
+</style>

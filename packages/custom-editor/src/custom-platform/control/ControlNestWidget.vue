@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 11:01:21
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-25 13:36:06
+ * @LastEditTime: 2024-12-12 11:12:52
  * @FilePath: \mall-book-vue3\src\components\control\ControlNestWidget.vue
  * @Description: 嵌套物料
 -->
@@ -29,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import WidgetShape from "./WidgetShape.vue";
 import { computed, ref, watch } from "vue";
 import { VueDraggable } from "vue-draggable-plus";
 

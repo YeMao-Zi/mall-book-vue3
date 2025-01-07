@@ -2,25 +2,25 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-10-24 14:26:30
+ * @LastEditTime: 2025-01-07 14:07:42
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
 <template>
   <div class="McCube" ref="McCubeRef" :style="wrapStyle">
     <div
-      class="cube-box"
+      class="mc-cube-box"
       v-for="(item, index) in cube.list"
       :style="getBoxStyle(item)"
       :key="index"
     >
-      <div class="cube-item" :style="getItemStyle(item)">
+      <div class="mc-cube-item" :style="getItemStyle(item)">
         <img
           v-if="item.imagePath"
-          class="cube-item-img"
+          class="mc-cube-item-img"
           :src="item.imagePath"
         />
-        <div class="empty" v-else></div>
+        <div class="mc-empty" v-else></div>
       </div>
     </div>
   </div>

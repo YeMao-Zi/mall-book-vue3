@@ -12,13 +12,7 @@ import tailwindcss from "tailwindcss";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag.includes("swiper"),
-        },
-      },
-    }),
+    vue(),
     vitePluginForArco({
       style: "css",
     }),
@@ -34,13 +28,18 @@ export default defineConfig({
       ],
     }),
   ],
-  server: { host: "0.0.0.0" },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+
   css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ["legacy-js-api", "color-functions"],
+      },
+    },
     postcss: {
       plugins: [
         postCssPxToRem({
@@ -50,10 +49,41 @@ export default defineConfig({
         tailwindcss,
       ],
     },
-    preprocessorOptions: {
-      scss: {
-        api: "modern-compiler",
-      },
+  },
+  build: {
+    rollupOptions: {
+      //忽略打包vue文件
+      external: ["vue"],
+      output: [
+        {
+          // 打包成 es module
+          format: "es",
+          // 重命名
+          entryFileNames: "[name].js",
+          // 打包目录和开发目录对应
+          preserveModules: true,
+          // 输出目录
+          dir: "es",
+          // 指定保留模块结构的根目录
+          preserveModulesRoot: "src",
+        },
+        {
+          // 打包成 commonjs
+          format: "cjs",
+          // 重命名
+          entryFileNames: "[name].js",
+          // 打包目录和开发目录对应
+          preserveModules: true,
+          // 输出目录
+          dir: "lib",
+          // 指定保留模块结构的根目录
+          preserveModulesRoot: "src",
+        },
+      ],
+    },
+    lib: {
+      entry: "./src/index.ts",
+      formats: ["es", "cjs"],
     },
   },
 });

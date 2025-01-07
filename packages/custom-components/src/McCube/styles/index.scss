@@ -4,24 +4,24 @@
   overflow: hidden;
 }
 
-.cube-box {
+.mc-cube-box {
   position: absolute;
   border: initial;
 }
 
-.cube-item {
+.mc-cube-item {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.cube-item-img {
+.mc-cube-item-img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.empty {
+.mc-empty {
   width: 100%;
   height: 100%;
   background-color: var(--color-theme-light);

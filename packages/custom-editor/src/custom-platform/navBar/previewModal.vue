@@ -34,7 +34,6 @@
 import { customComponent } from "@mobilecustom/components";
 import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
-import { deepClone } from "@/utils/index";
 import { onMounted, useTemplateRef, toRaw } from "vue";
 
 // const iframeRef = useTemplateRef("iframeRef");

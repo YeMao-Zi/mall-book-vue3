@@ -1,30 +1,30 @@
-.scroll {
+.mc-noticebar-scroll {
   width: 100%;
   flex: 1;
   overflow: hidden;
 }
 
-.place {
+.mc-noticebar-place {
   flex: 1;
   min-width: 0;
 }
 
-.content {
+.mc-noticebar-content {
   white-space: nowrap;
 }
 
-.box {
+.mc-noticebar-box {
   width: 100%;
   white-space: nowrap;
   display: flex;
 }
 
-.aniBox {
-  animation-name: roll;
+.mc-noticebar-aniBox {
+  animation-name: mc-noticebar-roll;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-@keyframes roll {
+@keyframes mc-noticebar-roll {
   0% {
     transform: translateX(0);
   }

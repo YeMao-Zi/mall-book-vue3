@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import ConfigItem from "@/custom-platform/ConfigItem.vue";
 defineProps<{ label: string }>();
 
 const model = defineModel<string>();

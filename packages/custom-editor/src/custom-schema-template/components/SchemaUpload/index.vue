@@ -57,7 +57,6 @@
 </template>
 
 <script setup lang="ts">
-import ConfigItem from "@/custom-platform/ConfigItem.vue";
 import { ref } from "vue";
 import { UploadInstance } from "@arco-design/web-vue";
 

@@ -1,6 +1,6 @@
 <template>
   <div class="McTab" :style="wrapStyle">
-    <div class="item" v-for="item in tabList" :key="item.id" :style="itemStyle">
+    <div class="mc-tab-item" v-for="item in tabList" :key="item.id" :style="itemStyle">
       <img
         v-if="attrs.type !== 'text'"
         :style="imageStyle"

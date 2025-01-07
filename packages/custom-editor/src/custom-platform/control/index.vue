@@ -2,14 +2,14 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-10-17 17:09:03
+ * @LastEditTime: 2024-12-13 13:46:39
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
 <template>
   <div class="flex h-full text-[16px]">
     <!-- 物料面板 -->
-    <div class="w-[236px] bg-white p-[10px]">
+    <div class="w-[236px] bg-white p-5">
       <VueDraggable
         ref="draggableRef"
         v-model="initial.initializing"
@@ -21,7 +21,7 @@
         <div
           v-for="item in initial.initializing"
           :key="item.name"
-          class="p-1 inline-flex flex-col items-center justify-center w-6/12 cursor-pointer hover:bg-blue-600 hover:text-white"
+          class="p-3 inline-flex flex-col items-center justify-center gap-1 w-6/12 cursor-pointer hover:bg-blue-600 hover:text-white"
         >
           <Icon style="font-size: 26px" :icon="item.icon"></Icon>
           <span class="text-[12px]">{{ item.name }}</span>
@@ -39,8 +39,8 @@
       </div>
     </div>
     <!-- 物料配置 -->
-    <div class="control-config w-[360px] overflow-y-scroll p-[10px] bg-white">
-      <div class="pb-1 mb-1 font-bold text-[20px] border-b-2">
+    <div class="control-config w-[360px] overflow-y-scroll p-5 bg-white">
+      <div class="pb-5 mb-5 font-bold text-[20px] border-b-2">
         {{ curComponent?.name || "页面" }}
       </div>
       <customSchemaTemplate
@@ -62,16 +62,18 @@ import { VueDraggable } from "vue-draggable-plus";
 import { Icon } from "@iconify/vue";
 import { useSchema } from "@mobilecustom/components";
 import { ref, provide, computed } from "vue";
-import { deepClone, randomString } from "@/utils/index";
+import { deepClone, randomString } from "../../utils/index";
 import type {
   SetCurComponent,
   DeleteComponent,
   ComponentOptions,
   InitializingItem,
-} from "@/types/control";
-import { ControlInject } from "@/types/control";
-import customSchemaTemplate from "@/custom-schema-template/index.vue";
+} from "../../types/control";
+import { ControlInject } from "../../types/control";
+import customSchemaTemplate from "../../custom-schema-template/index.vue";
 import { page, pageShemaField } from "../pageConfig/config";
+import pageConfig from "../pageConfig/index.vue";
+import ControlNestWidget from "./ControlNestWidget.vue";
 
 import { widgets } from "./config";
 

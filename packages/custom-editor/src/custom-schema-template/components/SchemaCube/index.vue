@@ -1,6 +1,6 @@
 <template>
-  <div class="mb-1">
-    <div class="p-1 bg-slate-200 text-slate-600">
+  <div class="mb-5">
+    <div class="p-3 bg-slate-200 text-slate-600">
       <span>{{ label }}</span>
     </div>
     <div>
@@ -72,7 +72,6 @@
 </template>
 
 <script setup lang="ts">
-import ConfigItem from "@/custom-platform/ConfigItem.vue";
 import { computed, ref, watch } from "vue";
 defineProps<{ label: string }>();
 

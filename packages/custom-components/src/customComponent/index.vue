@@ -1,5 +1,5 @@
 <template>
-  <div class="page" :style="page.styles">
+  <div class="mc-page" :style="page.styles">
     <Preview :widgets="widgets" :onClick="onClick" />
   </div>
 </template>

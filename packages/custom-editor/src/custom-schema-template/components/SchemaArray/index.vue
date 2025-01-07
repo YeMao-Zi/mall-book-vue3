@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="p-1 bg-slate-200 text-slate-600">
+    <div class="p-3 bg-slate-200 text-slate-600">
       <span>{{ label }}</span>
     </div>
-    <div class="p-1">
+    <div class="p-1 my-2">
       <VueDraggable v-model="model">
         <!-- 编译模式,插槽可供自定义拖拽组件入容器 -->
         <slot v-if="edit"></slot>
@@ -28,9 +28,9 @@
 
 <script setup lang="ts">
 import { VueDraggable } from "vue-draggable-plus";
-import type { Field } from "@/types/control";
+import type { Field } from "../../../types/control";
 import { getComponents } from "../../config";
-import { randomString } from "@/utils/index";
+import { randomString } from "../../../utils/index";
 
 interface Props {
   label: string;

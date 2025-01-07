@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="p-1 bg-slate-200 text-slate-600">
+    <div class="p-3 bg-slate-200 text-slate-600">
       <span>{{ label }}</span>
     </div>
-    <div class="p-1">
+    <div class="p-3">
       <slot></slot>
     </div>
   </div>

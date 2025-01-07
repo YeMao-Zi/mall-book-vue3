@@ -4,7 +4,7 @@ import customSchemaTemplate from "./index.vue";
 // 注册组件
 export function initCustomSchemaTemplate(app: App<Element>) {
   const requireModules = import.meta.glob(
-    "@/custom-schema-template/**/index.vue",
+    "../custom-schema-template/**/index.vue",
   );
 
   for (const path in requireModules) {
