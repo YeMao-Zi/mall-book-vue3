@@ -4,9 +4,7 @@ import Components from "unplugin-vue-components/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { fileURLToPath, URL } from "node:url";
-import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
-import postCssPxToRem from "postcss-pxtorem";
 import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
@@ -41,13 +39,7 @@ export default defineConfig({
       },
     },
     postcss: {
-      plugins: [
-        postCssPxToRem({
-          rootValue: 37.5,
-          propList: ["*"],
-        }),
-        tailwindcss,
-      ],
+      plugins: [tailwindcss],
     },
   },
   build: {

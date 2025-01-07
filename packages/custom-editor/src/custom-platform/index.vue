@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="bg-cyan-200" style="color: aquamarine">333</div>
     <div class="page">
       <div class="page-header">
         <navBar />

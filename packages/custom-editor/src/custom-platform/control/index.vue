@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-12-13 13:46:39
+ * @LastEditTime: 2025-01-07 16:27:24
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -48,11 +48,7 @@
         v-model="curComponent"
         :shema-field="curShemaField"
       />
-      <customSchemaTemplate
-        v-else
-        v-model="page"
-        :shema-field="pageShemaField"
-      />
+      <customSchemaTemplate v-else v-model="page" :shema-field="pageShemaField" />
     </div>
   </div>
 </template>
@@ -85,7 +81,7 @@ const curComponent = ref<ComponentOptions>();
 const curShemaField = computed(() => {
   if (!curComponent?.value) return undefined;
   const shemaField = initial.fields[curComponent?.value.component];
-  console.log(shemaField, "shemaField");
+  // console.log(shemaField, "shemaField");
   return shemaField;
 });
 
@@ -100,7 +96,7 @@ const handleClone = (model: InitializingItem) => {
 
 // 选中物料
 const setCurComponent: SetCurComponent = (cmp) => {
-  console.log(cmp, "cmp", widgets.value);
+  // console.log(cmp, "cmp", widgets.value);
   curComponent.value = cmp;
 };
 
@@ -137,7 +133,4 @@ provide(ControlInject, {
 });
 </script>
 
-<style lang="scss" scoped>
-.custom-platform {
-}
-</style>
+<style lang="scss" scoped></style>
