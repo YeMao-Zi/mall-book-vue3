@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-10 15:31:30
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2025-01-07 16:27:24
+ * @LastEditTime: 2025-01-07 18:21:36
  * @FilePath: \mall-book-vue3\src\components\control\index.vue
  * @Description: 展示模板
 -->
@@ -33,7 +33,7 @@
       <div class="w-full">
         <div class="w-[375px] my-[50px] mx-auto bg-white shadow-lg">
           <pageConfig :styles="page.styles" @page-setting="handlePageSetting">
-            <ControlNestWidget v-model:list="widgets"></ControlNestWidget>
+            <ControlNestWidget v-model:widgets="widgets"></ControlNestWidget>
           </pageConfig>
         </div>
       </div>
@@ -74,14 +74,12 @@ import ControlNestWidget from "./ControlNestWidget.vue";
 import { widgets } from "./config";
 
 const initial = useSchema();
-// const widgets = ref<ComponentOptions[]>([]);
 const curComponent = ref<ComponentOptions>();
 
 // 当前选中物料的配置
 const curShemaField = computed(() => {
   if (!curComponent?.value) return undefined;
   const shemaField = initial.fields[curComponent?.value.component];
-  // console.log(shemaField, "shemaField");
   return shemaField;
 });
 
@@ -90,13 +88,12 @@ const handleClone = (model: InitializingItem) => {
   return {
     ...deepClone(model),
     id: randomString(),
-    children,
+    children: deepClone(children),
   };
 };
 
 // 选中物料
 const setCurComponent: SetCurComponent = (cmp) => {
-  // console.log(cmp, "cmp", widgets.value);
   curComponent.value = cmp;
 };
 
@@ -126,8 +123,8 @@ const handlePageSetting = () => {
 
 provide(ControlInject, {
   initial,
-  widgets: widgets,
-  curComponent: curComponent,
+  widgets: computed(() => widgets.value),
+  curComponent: computed(() => curComponent.value),
   setCurComponent,
   deleteComponent,
 });

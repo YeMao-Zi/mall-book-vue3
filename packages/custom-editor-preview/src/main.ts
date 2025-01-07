@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 // import "@mobilecustom/components/lib/style.css";
+import install from "@mobilecustom/components";
 
 // import "tailwindcss/tailwind.css";
 
@@ -10,6 +11,6 @@ import App from "./App.vue";
 import "@mobilecustom/editor/lib/style.css"
 import { initCustomPlatform } from "@mobilecustom/editor";
 
-import install from "@mobilecustom/components";
+
 // import install from "../../custom-components/src/index";
 createApp(App).use(initCustomPlatform).mount("#app");

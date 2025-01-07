@@ -2,7 +2,7 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 11:01:21
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-12-12 11:12:52
+ * @LastEditTime: 2025-01-07 18:33:19
  * @FilePath: \mall-book-vue3\src\components\control\ControlNestWidget.vue
  * @Description: 嵌套物料
 -->
@@ -18,7 +18,7 @@
       <component :is="item.component" v-bind="item">
         <ControlNestWidget
           v-if="item.children"
-          v-model:list="item.children"
+          v-model:widgets="item.children"
           is-widget
         ></ControlNestWidget>
       </component>
@@ -30,26 +30,15 @@
 
 <script setup lang="ts">
 import WidgetShape from "./WidgetShape.vue";
-import { computed, ref, watch } from "vue";
 import { VueDraggable } from "vue-draggable-plus";
 
 interface Props {
   isWidget?: boolean;
-  list: any[];
 }
-const { isWidget = false, list } = defineProps<Props>();
+const { isWidget = false } = defineProps<Props>();
 
-interface Emits {
-  (e: "update:list", value: any): void;
-}
-const emits = defineEmits<Emits>();
-
-const widgets = computed({
-  get: () => list,
-  set: (value) => {
-    console.log(value, "value");
-    emits("update:list", value);
-  },
+const widgets = defineModel<any[]>("widgets", {
+  required: true,
 });
 </script>
 
