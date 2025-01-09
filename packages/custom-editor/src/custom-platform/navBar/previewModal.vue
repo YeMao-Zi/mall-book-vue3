@@ -8,7 +8,7 @@
           <div class="phoneContent">
             <!-- <iframe
               style="width: 100%; height: 100%"
-              ref="iframeRef"
+              ref="Iframe"
               src="/#/preview"
               @load="iframeLoad"
             /> -->
@@ -36,7 +36,7 @@ import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
 import { onMounted, useTemplateRef, toRaw } from "vue";
 
-// const iframeRef = useTemplateRef("iframeRef");
+// const iframeRef = useTemplateRef("Iframe");
 const visible = defineModel<boolean>();
 
 const {} = defineProps();

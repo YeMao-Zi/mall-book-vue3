@@ -1,8 +1,8 @@
 <template>
-  <div ref="scrollRef" class="mc-noticebar-scroll" style="width: 0px">
+  <div ref="noticebarScroll" class="mc-noticebar-scroll" style="width: 0px">
     <div class="mc-noticebar-box">
       <div
-        ref="contentRef"
+        ref="noticebarContent"
         class="mc-noticebar-content"
         :style="{
           animationDuration: _duration + 's',
@@ -23,8 +23,8 @@ import type { NoticeBarProps } from "./type";
 const { speed = 100, scrollable = true } = defineProps<NoticeBarProps>();
 
 const _scrollable = ref(scrollable);
-const contentRef = useTemplateRef("contentRef");
-const scrollRef = useTemplateRef("scrollRef");
+const noticebarContentRef = useTemplateRef("noticebarContent");
+const noticebarScrollRef = useTemplateRef("noticebarScroll");
 
 const _duration = ref(0);
 const _scrollRefWidth = ref(0);
@@ -35,8 +35,8 @@ onMounted(() => {
 
 async function getWrapWidth() {
   await nextTick();
-  const scrollWidth = scrollRef.value?.offsetWidth || 0;
-  const width = contentRef.value?.offsetWidth || 0;
+  const scrollWidth = noticebarScrollRef.value?.offsetWidth || 0;
+  const width = noticebarContentRef.value?.offsetWidth || 0;
   if (!scrollable) {
     if (scrollWidth <= width) {
       _scrollable.value = true;

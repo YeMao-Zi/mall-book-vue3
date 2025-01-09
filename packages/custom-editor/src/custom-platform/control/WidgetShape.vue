@@ -2,13 +2,13 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-07-30 13:34:09
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2024-09-30 15:04:51
+ * @LastEditTime: 2025-01-09 11:17:25
  * @FilePath: \mall-book-vue3\src\components\control\WidgetShape.vue
  * @Description: 物流容器（管理工具栏）
 -->
 <template>
   <div
-    ref="shapeRef"
+    ref="shape"
     class="shape"
     @click.stop="controlInject?.setCurComponent(widget)"
   >
@@ -55,7 +55,7 @@ const props = defineProps<{
 }>();
 
 const show = ref(false);
-const shapeRef = useTemplateRef<Element>("shapeRef");
+const shapeRef = useTemplateRef<Element>("shape");
 
 const isCurComponent = (id: string) => {
   return id === controlInject?.curComponent?.value?.id;
