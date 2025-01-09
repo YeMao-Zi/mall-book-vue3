@@ -6,9 +6,9 @@
       :src="imageValue.icon"
       :style="icoStyle"
     />
-    <noticeBar :key="noticeBarKey" v-bind="attrs">
+    <NoticeBar :key="noticeBarKey" v-bind="props.attrs">
       <div>{{ imageValue.text }}</div>
-    </noticeBar>
+    </NoticeBar>
   </div>
 </template>
 
@@ -16,7 +16,7 @@
 import { computed, StyleValue, ref, watch } from "vue";
 import type { McNoticeProps } from "./type";
 import { getMainStyle } from "../utils";
-import noticeBar from "./noticeBar.vue";
+import NoticeBar from "./noticeBar.vue";
 defineOptions({
   name: "McNotice",
 });
@@ -30,7 +30,6 @@ const props = defineProps<McNoticeProps>();
 watch(
   () => props,
   () => {
-    // console.log('watch')
     noticeBarKey.value = randomString();
   },
   {

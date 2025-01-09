@@ -7,6 +7,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         silenceDeprecations: ["legacy-js-api", "color-functions"],
+        api: "modern-compiler",
       },
     },
   },
@@ -16,6 +17,7 @@ export default defineConfig({
       external: ["vue", /\.css/, /\.scss/],
       output: [
         {
+          exports: "named",
           // 打包成 es module
           format: "es",
           // 重命名
@@ -28,6 +30,7 @@ export default defineConfig({
           preserveModulesRoot: "src",
         },
         {
+          exports: "named",
           // 打包成 commonjs
           format: "cjs",
           // 重命名
@@ -43,7 +46,6 @@ export default defineConfig({
     },
     lib: {
       entry: "./src/index.ts",
-      formats: ["es", "cjs"],
     },
   },
   plugins: [

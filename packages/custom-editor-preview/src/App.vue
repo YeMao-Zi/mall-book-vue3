@@ -8,8 +8,8 @@ import { customComponent } from "@mobilecustom/components";
 </script>
 
 <template>
-  <!-- <customComponent :widgets="widgets" :page="page" /> -->
-  <customPlatform />
+  <customComponent :widgets="widgets" :page="page" />
+  <!-- <customPlatform /> -->
 </template>
 
 <style scoped></style>

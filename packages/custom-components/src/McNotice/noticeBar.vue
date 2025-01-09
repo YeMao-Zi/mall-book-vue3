@@ -2,8 +2,8 @@
   <div ref="scrollRef" class="mc-noticebar-scroll" style="width: 0px">
     <div class="mc-noticebar-box">
       <div
-        class="mc-noticebar-content"
         ref="contentRef"
+        class="mc-noticebar-content"
         :style="{
           animationDuration: _duration + 's',
           paddingLeft: `${_scrollRefWidth}px`,
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, useTemplateRef } from "vue";
+import { nextTick, onMounted, ref, useTemplateRef } from "vue";
 import type { NoticeBarProps } from "./type";
 
 const { speed = 100, scrollable = true } = defineProps<NoticeBarProps>();
@@ -33,7 +33,8 @@ onMounted(() => {
   getWrapWidth();
 });
 
-function getWrapWidth() {
+async function getWrapWidth() {
+  await nextTick();
   const scrollWidth = scrollRef.value?.offsetWidth || 0;
   const width = contentRef.value?.offsetWidth || 0;
   if (!scrollable) {
@@ -45,11 +46,9 @@ function getWrapWidth() {
     }
   }
   _scrollRefWidth.value = scrollWidth;
-  let totalWidth = (width + scrollWidth) / speed;
+  const totalWidth = (width + scrollWidth) / speed;
   _duration.value = Math.ceil(totalWidth);
 }
 </script>
 
-<style scoped lang="scss">
-// @use "./styles/noticeBar.scss"
-</style>
+<style scoped lang="scss"></style>
