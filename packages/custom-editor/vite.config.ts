@@ -6,6 +6,7 @@ import { vitePluginForArco } from "@arco-plugins/vite-vue";
 import { fileURLToPath, URL } from "node:url";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "tailwindcss";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,6 +26,14 @@ export default defineConfig({
         }),
       ],
     }),
+    dts({
+      // 输出目录
+      outDir: ["types"],
+      // 将动态引入转换为静态（例如：`import('vue').DefineComponent` 转换为 `import { DefineComponent } from 'vue'`）
+      staticImport: true,
+      // 将所有的类型合并到一个文件中
+      rollupTypes: true,
+    }),
   ],
   resolve: {
     alias: {
@@ -36,6 +45,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         silenceDeprecations: ["legacy-js-api", "color-functions"],
+        api: "modern-compiler",
       },
     },
     postcss: {
@@ -75,7 +85,6 @@ export default defineConfig({
     },
     lib: {
       entry: "./src/index.ts",
-      formats: ["es", "cjs"],
     },
   },
 });

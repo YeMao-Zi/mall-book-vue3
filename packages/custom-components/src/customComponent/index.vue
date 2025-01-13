@@ -1,6 +1,6 @@
 <template>
   <div class="mc-page" :style="page.styles">
-    <Preview :widgets="widgets" :onClick="onClick" />
+    <Preview :widgets="widgets" :onEventClick="onEventClick" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ defineOptions({
   name: "customComponent",
 });
 
-const { page, widgets, onClick } = defineProps<CustomComponentProps>();
+const { page, widgets, onEventClick } = defineProps<CustomComponentProps>();
 </script>
 
 <style></style>

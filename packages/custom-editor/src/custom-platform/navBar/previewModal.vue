@@ -15,7 +15,7 @@
             <customComponent
               :page="page"
               :widgets="widgets"
-              :onClick="onClick"
+              :onEventClick="pageInject?.onEventClick"
             />
           </div>
           <div class="safeBottom"></div>
@@ -31,15 +31,16 @@
 </template>
 
 <script setup lang="ts">
+import { inject } from "vue";
 import { customComponent } from "@mobilecustom/components";
 import { widgets } from "../control/config";
 import { page } from "../pageConfig/config";
+import { PageInject } from "../../types/platform";
 import { onMounted, useTemplateRef, toRaw } from "vue";
 
+const pageInject = inject(PageInject);
 // const iframeRef = useTemplateRef("Iframe");
 const visible = defineModel<boolean>();
-
-const {} = defineProps();
 
 // const iframeLoad = () => {
 //   const info = {
@@ -52,20 +53,12 @@ const {} = defineProps();
 // };
 
 const handleConfirm = () => {
-  console.log(page, "page", widgets);
+  pageInject?.pageConfirm({
+    page,
+    widgets: widgets.value,
+  });
 };
-const onClick = (options: any) => {
-  console.log(options, "options");
-  //   const { item = {}, type } = options;
-  //   const { jumpPath } = item;
-  //   if (!jumpPath) return;
-  //   if (jumpPath.startsWith("http")) {
-  //     location.href = jumpPath;
-  //   } else {
-  //     location.href =
-  //       location.origin + location.pathname + location.hash.slice(0, -1); + jumpPath;
-  //   }
-};
+
 onMounted(() => {});
 </script>
 

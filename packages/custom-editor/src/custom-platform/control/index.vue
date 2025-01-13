@@ -64,8 +64,8 @@ import type {
   DeleteComponent,
   ComponentOptions,
   InitializingItem,
-} from "../../types/control";
-import { ControlInject } from "../../types/control";
+} from "../../types/platform";
+import { ControlInject } from "../../types/platform";
 import customSchemaTemplate from "../../custom-schema-template/index.vue";
 import { page, pageShemaField } from "../pageConfig/config";
 import pageConfig from "../pageConfig/index.vue";

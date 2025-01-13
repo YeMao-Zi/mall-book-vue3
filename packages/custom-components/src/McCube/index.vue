@@ -2,12 +2,12 @@
  * @Author: zsj 1794541268@qq.com
  * @Date: 2024-09-23 13:51:24
  * @LastEditors: zsj 1794541268@qq.com
- * @LastEditTime: 2025-01-09 11:15:15
+ * @LastEditTime: 2025-01-09 15:27:45
  * @FilePath: \mall-book-vue3\src\custom-components\McCube\index.vue
  * @Description: 魔方组件
 -->
 <template>
-  <div class="McCube" ref="McCube" :style="wrapStyle">
+  <div class="McCube" ref="mcCube" :style="wrapStyle">
     <div
       class="mc-cube-box"
       v-for="(item, index) in cube.list"
@@ -33,14 +33,13 @@ import type { McCubeListItem, McCubeProps } from "./type";
 defineOptions({
   name: "McCube",
 });
-const McCubeRef = useTemplateRef("McCube");
+const McCubeRef = useTemplateRef("mcCube");
 
 const contentWidth = ref<number>(375);
 
 const { styles = {}, cube } = defineProps<McCubeProps>();
 
 const wrapStyle = computed(() => {
-  // console.log(cube, "cube");
   const column = cube.column;
   const row = cube.row;
   const mainStyle = getMainStyle(styles);

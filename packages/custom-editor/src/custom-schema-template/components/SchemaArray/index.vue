@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { VueDraggable } from "vue-draggable-plus";
-import type { Field } from "../../../types/control";
+import type { Field } from "../../../types/platform";
 import { getComponents } from "../../config";
 import { randomString } from "../../../utils/index";
 

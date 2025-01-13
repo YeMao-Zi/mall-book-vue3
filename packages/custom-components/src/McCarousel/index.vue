@@ -24,7 +24,7 @@ const {
   attrs = {},
   styles = {},
   list = [],
-  onClick,
+  onEventClick,
 } = defineProps<McCarouselProps>();
 
 const swiperAttrs = computed(() => {
@@ -49,7 +49,7 @@ const wrapStyle = computed<StyleValue>(() => {
 });
 
 const handleClick = (item: McCarouselListItem) => {
-  onClick && onClick({ item, type: "carousel" });
+  onEventClick && onEventClick({ item, type: "carousel" });
 };
 </script>
 

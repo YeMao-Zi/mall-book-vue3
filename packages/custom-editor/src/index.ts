@@ -1,8 +1,8 @@
-import platform from "./custom-platform";
-import './style/index.css'
+import CustomEditor from "./custom-platform";
+import "./style/index.css";
 import "tailwindcss/tailwind.css";
-import { initCustomPlatform } from "./custom-platform";
+import { CustomEditor as CustomEditorInstall } from "./custom-platform";
 
 // export * from "./vite-vue/index";
-export { initCustomPlatform };
-export default platform;
+export { CustomEditor };
+export default CustomEditorInstall;

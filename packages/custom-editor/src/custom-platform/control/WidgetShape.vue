@@ -48,7 +48,7 @@
 <script setup lang="ts">
 import { ref, inject, onMounted, useTemplateRef } from "vue";
 import { Icon } from "@iconify/vue";
-import { ControlInject, type ComponentOptions } from "../../types/control";
+import { ControlInject, type ComponentOptions } from "../../types/platform";
 const controlInject = inject(ControlInject);
 const props = defineProps<{
   widget: ComponentOptions;

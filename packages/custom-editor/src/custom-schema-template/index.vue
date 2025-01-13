@@ -26,7 +26,7 @@ import {
   type Field,
   type ComponentOptions,
   ControlInject,
-} from "../types/control";
+} from "../types/platform";
 import { getComponents } from "./config";
 
 const controlInject = inject(ControlInject);

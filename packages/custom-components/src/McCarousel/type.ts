@@ -8,7 +8,7 @@ export type McCarouselListItem = ObjectExpand<{
 }>;
 export interface McCarouselProps extends MainProps {
   list: Array<McCarouselListItem>;
-  onClick?: EventClick;
+  onEventClick?: EventClick;
 }
 /**
  * 定义instance类型

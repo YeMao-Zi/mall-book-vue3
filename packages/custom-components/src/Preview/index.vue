@@ -1,10 +1,10 @@
 <template>
   <template v-for="item in widgets">
-    <component :is="item.component" v-bind="item" :onClick="onClick">
+    <component :is="item.component" v-bind="item" :onEventClick="onEventClick">
       <Preview
         v-if="item.children"
         :widgets="item.children"
-        :onClick="onClick"
+        :onEventClick="onEventClick"
       ></Preview>
     </component>
   </template>
@@ -15,7 +15,7 @@ import type { PreviewProps } from "./type";
 defineOptions({
   name: "Preview",
 });
-const { widgets } = defineProps<PreviewProps>();
+const props = defineProps<PreviewProps>();
 </script>
 
 <style></style>
