@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e="页面配置",o="",l={styles:{label:"页面样式",type:"object",child:{backgroundColor:{label:"背景色",type:"color",value:"rgba(255, 255, 255, 1)"}}}},t={name:e,icon:o,fields:l};exports.default=t;exports.fields=l;exports.icon=o;exports.name=e;

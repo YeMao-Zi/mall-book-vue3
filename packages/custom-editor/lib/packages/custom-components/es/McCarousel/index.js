@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("../utils.js"),r=require("./index.vue2.js"),u=require("../node_modules/.pnpm/swiper@11.1.14/node_modules/swiper/swiper-element-bundle.js");u.register();const e=t.withInstall(r);exports.McCarousel=e;exports.default=e;

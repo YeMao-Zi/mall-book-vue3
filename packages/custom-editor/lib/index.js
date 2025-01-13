@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("./custom-platform/index.js");;/* empty css                 */;/* empty css                                                                             */const r=require("./custom-platform/index.vue.js");exports.default=e.CustomEditor;exports.CustomEditor=r;

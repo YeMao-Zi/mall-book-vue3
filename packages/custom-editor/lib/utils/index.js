@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const o=()=>Math.random().toString(36).slice(2),r=e=>{if(typeof e!="object")return e;let t=new e.constructor;for(const n in e)t[n]=r(e[n]);return t};exports.deepClone=r;exports.randomString=o;
