@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@mobilecustom/editor": "^1.0.0",
-    "@mobilecustom/components": "^1.0.0"
+    "@mobilecustom/components": "^1.1.1"
   },
   "devDependencies": {
     "vue": "^3.5.1",
