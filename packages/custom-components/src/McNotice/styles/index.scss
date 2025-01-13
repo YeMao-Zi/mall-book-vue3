@@ -1,0 +1,7 @@
+@use "./noticeBar.scss" as *;
+
+.McNotice {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}

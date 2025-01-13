@@ -1,0 +1,17 @@
+{
+  "name": "页面配置",
+  "icon": "",
+  "fields": {
+    "styles": {
+      "label": "页面样式",
+      "type": "object",
+      "child": {
+        "backgroundColor": {
+          "label": "背景色",
+          "type": "color",
+          "value": "rgba(255, 255, 255, 1)"
+        }
+      }
+    }
+  }
+}

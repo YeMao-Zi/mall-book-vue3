@@ -1,0 +1,30 @@
+{
+  "name": "@mobilecustom/components",
+  "version": "1.1.1",
+  "type": "module",
+  "main": "lib",
+  "module": "es",
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "build": "gulp -f build/gulpfile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YeMao-Zi/mall-book-vue3"
+  },
+  "files": [
+    "es",
+    "lib",
+    "types"
+  ],
+  "dependencies": {
+    "swiper": "^11.1.12"
+  },
+  "devDependencies": {
+    "vue": "^3.5.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

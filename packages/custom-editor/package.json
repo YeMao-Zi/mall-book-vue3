@@ -1,0 +1,33 @@
+{
+  "name": "@mobilecustom/editor",
+  "version": "1.0.1",
+  "type": "module",
+  "main": "lib",
+  "module": "es",
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YeMao-Zi/mall-book-vue3"
+  },
+  "files": [
+    "es",
+    "lib",
+    "types"
+  ],
+  "dependencies": {
+    "vue-draggable-plus": "^0.5.3",
+    "@mobilecustom/components": "^1.1.1",
+    "tailwindcss": "^3.4.7",
+    "@iconify/vue": "^4.1.2"
+  },
+  "devDependencies": {
+    "vue": "^3.5.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "@mobilecustom/editor-preview",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@mobilecustom/editor": "^1.0.0",
+    "@mobilecustom/components": "^1.1.1"
+  },
+  "devDependencies": {
+    "vue": "^3.5.1",
+    "@arco-design/web-vue": "^2.56.2",
+    "@arco-plugins/vite-vue": "^1.4.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "tailwindcss": "^3.4.7"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}

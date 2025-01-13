@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ui-color-black: #000;
+  --color-grey: #969799;
+  --color-red: #ee0a24;
+  --color-black: #000;
+  --color-theme: #409eff;
+  --border-base: #dcdfe6;
+  --color-theme-light: #ecf5ff;
+
+  --font-mini: 12px;
+  --font-middle: 14px;
+  --font-large: 16px;
+
+  --h5-color-theme: #c7655a;
+  --h5-color-bg: #f8f8f8;
+}

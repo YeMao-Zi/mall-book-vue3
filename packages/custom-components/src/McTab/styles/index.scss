@@ -1,0 +1,12 @@
+.McTab {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.mc-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 auto;
+}
