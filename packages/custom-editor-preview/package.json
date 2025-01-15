@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mobilecustom/editor": "^1.0.0",
+    "@mobilecustom/editor": "^1.0.2",
     "@mobilecustom/components": "^1.1.1"
   },
   "devDependencies": {
