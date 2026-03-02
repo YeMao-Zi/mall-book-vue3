@@ -2,7 +2,14 @@
 
 ![image-20250115094235431](https://s2.loli.net/2025/01/15/GVrxZJUYSMip3nq.png)
 
+[example](https://codesandbox.io/p/devbox/editor-n3763h?embed=1)
+
+```bash
+npm i @mobilecustom/editor
+```
+
 ```js
+// main.js
 import "@mobilecustom/editor/lib/editor.css";
 import CustomEditor from "@mobilecustom/editor";
 
