@@ -8,14 +8,14 @@
   word-break: break-all;
 }
 
-.McContainer {
+.McCarousel {
   overflow: hidden;
 }
-.McContainer swiper-container {
+.McCarousel swiper-container {
   width: 100%;
   height: 100%;
 }
-.McContainer swiper-slide {
+.McCarousel swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -23,7 +23,7 @@
   justify-content: center;
   align-items: center;
 }
-.McContainer swiper-slide img {
+.McCarousel swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;

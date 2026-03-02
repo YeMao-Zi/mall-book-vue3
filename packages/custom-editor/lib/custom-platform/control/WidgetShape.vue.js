@@ -1,1 +1,1 @@
-"use strict";const e=require("./WidgetShape.vue2.js");;/* empty css                  */const t=require("../../_virtual/_plugin-vue_export-helper.js"),r=t(e,[["__scopeId","data-v-bcaff639"]]);module.exports=r;
+"use strict";const e=require("./WidgetShape.vue2.js");;/* empty css                  */const t=require("../../_virtual/_plugin-vue_export-helper.js"),r=t(e,[["__scopeId","data-v-a2deacc5"]]);module.exports=r;

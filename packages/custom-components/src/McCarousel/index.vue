@@ -1,5 +1,5 @@
 <template>
-  <div class="McContainer" :style="wrapStyle">
+  <div class="McCarousel" :style="wrapStyle">
     <swiper-container v-bind="swiperAttrs">
       <swiper-slide
         v-for="item in list"

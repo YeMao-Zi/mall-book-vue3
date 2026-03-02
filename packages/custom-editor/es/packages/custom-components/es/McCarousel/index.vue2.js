@@ -1,4 +1,4 @@
-import { defineComponent as p, computed as a, openBlock as o, createElementBlock as n, normalizeStyle as m, createElementVNode as i, normalizeProps as d, guardReactiveProps as y, Fragment as f, renderList as k } from "vue";
+import { defineComponent as p, computed as n, openBlock as o, createElementBlock as r, normalizeStyle as m, createElementVNode as i, normalizeProps as d, guardReactiveProps as y, Fragment as f, renderList as k } from "vue";
 import { getMainStyle as v } from "../utils.js";
 const C = ["onClick"], g = ["src"], M = /* @__PURE__ */ p({
   name: "McCarousel",
@@ -19,19 +19,19 @@ const C = ["onClick"], g = ["src"], M = /* @__PURE__ */ p({
     }
   },
   setup(t) {
-    const s = a(() => {
+    const s = n(() => {
       const {
         autoplay: e = !0,
-        loop: r
+        loop: a
       } = t.attrs;
       return {
         pagination: !0,
         autoplay: e ? {
           delay: 2500
         } : !1,
-        loop: r
+        loop: a
       };
-    }), c = a(() => ({
+    }), c = n(() => ({
       ...v(t.styles)
     })), u = (e) => {
       t.onEventClick && t.onEventClick({
@@ -39,10 +39,10 @@ const C = ["onClick"], g = ["src"], M = /* @__PURE__ */ p({
         type: "carousel"
       });
     };
-    return (e, r) => (o(), n("div", {
-      class: "McContainer",
+    return (e, a) => (o(), r("div", {
+      class: "McCarousel",
       style: m(c.value)
-    }, [i("swiper-container", d(y(s.value)), [(o(!0), n(f, null, k(e.list, (l) => (o(), n("swiper-slide", {
+    }, [i("swiper-container", d(y(s.value)), [(o(!0), r(f, null, k(e.list, (l) => (o(), r("swiper-slide", {
       key: l.id,
       onClick: (E) => u(l)
     }, [i("img", {

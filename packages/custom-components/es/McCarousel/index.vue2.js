@@ -26,7 +26,7 @@ const v = ["onClick"], g = ["src"], w = /* @__PURE__ */ d({
       t.onEventClick && t.onEventClick({ item: e, type: "carousel" });
     };
     return (e, r) => (l(), a("div", {
-      class: "McContainer",
+      class: "McCarousel",
       style: m(c.value)
     }, [
       s("swiper-container", p(y(i.value)), [

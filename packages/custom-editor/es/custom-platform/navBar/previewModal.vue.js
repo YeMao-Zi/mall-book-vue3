@@ -1,7 +1,7 @@
 import o from "./previewModal.vue2.js";
 /* empty css                  */
 import r from "../../_virtual/_plugin-vue_export-helper.js";
-const e = /* @__PURE__ */ r(o, [["__scopeId", "data-v-571b35a8"]]);
+const a = /* @__PURE__ */ r(o, [["__scopeId", "data-v-e0b9dc01"]]);
 export {
-  e as default
+  a as default
 };
